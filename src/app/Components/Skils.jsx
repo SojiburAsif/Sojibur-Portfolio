@@ -46,7 +46,7 @@ const tools = [
   { name: 'GitHub', icon: <FaGithub className="text-white" /> },
 ];
 
-// Variants for container and items
+
 const containerVariants = {
   hidden: {},
   visible: {
