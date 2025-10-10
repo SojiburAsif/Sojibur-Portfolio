@@ -16,9 +16,7 @@
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
     "react-simple-typewriter": "^5.0.1",
-    "react-tsparticles": "^2.12.2",
-    "swiper": "^12.0.2",
-    "tsparticles": "^3.9.1"
+    "swiper": "^12.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
