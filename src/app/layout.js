@@ -5,7 +5,7 @@ import Fooder from "./Fooder/Footer";
 
 const saira = Saira({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // আপনার দরকার মতো weight
+  weight: ["400", "500", "600", "700"], 
   variable: "--font-saira",
 });
 
@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${saira.variable} antialiased`}>
         <Header />
         {children}

@@ -77,7 +77,7 @@ const Header = () => {
           {/* CV Button (Desktop) */}
           <div className="hidden lg:flex items-center space-x-4">
             <Link
-              href="/public/SojiburAsif.Resume.pdf"
+              href="/SojiburAsif.CV (1).pdf"
               download
               className="flex p-2 items-center space-x-2 text-sm font-semibold text-white rounded hover:bg-gray-900 border border-purple-500 transition-all"
             >
