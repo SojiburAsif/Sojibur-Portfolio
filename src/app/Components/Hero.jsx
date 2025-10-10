@@ -20,7 +20,7 @@ const images = [
 
 const PortfolioBanner = () => {
   return (
-    <div className="relative font-rancho bg-gradient-to-b from-gray-900 to-black " id="home" style={{ backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="relative  bg-gradient-to-b  font-rancho from-gray-900 to-black " id="home" style={{ backgroundSize: "cover", backgroundPosition: "center" }}>
       <div  className="max-w-7xl mx-auto">
         <div className="absolute  bottom-0 left-0 right-0 h-40 sm:h-56 md:h-72 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-0" />
         <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-800 opacity-20 rounded-full blur-3xl" />
