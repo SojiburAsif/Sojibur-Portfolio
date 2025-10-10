@@ -15,7 +15,7 @@ import {
 // make sure these paths match your project files (fix case if needed)
 import Project1 from '../Projects/Project1';
 import Project2 from '../Projects/Project2';
-import Project3 from '../Projects/Project3';
+import Project3 from '../Projects/project3';
 
 import project1Img from '../../../public/Project-1/img1.png';
 import project2Img from '../../../public/Project-2/img11.png';
