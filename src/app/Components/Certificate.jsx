@@ -23,24 +23,7 @@ const certificates = [
         date: "Jun 2021",
         img: "/Certificate/WhatsApp Image 2025-10-10 at 21.54.33_7f1011fb.jpg",
     },
-    {
-        title: "Frontend Development Course",
-        issuedBy: "LinkedIn Learning",
-        date: "Aug 2025",
-        img: "/Certificate/linkedin-course1.png",
-    },
-    {
-        title: "React Advanced Course",
-        issuedBy: "LinkedIn Learning",
-        date: "Sep 2025",
-        img: "/Certificate/linkedin-course2.png",
-    },
-    {
-        title: "Node.js Backend Mastery",
-        issuedBy: "LinkedIn Learning",
-        date: "Oct 2025",
-        img: "/Certificate/linkedin-course3.png",
-    },
+  
 ];
 
 const Certificate = () => {
