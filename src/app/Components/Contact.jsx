@@ -9,6 +9,7 @@ import {
     FaTwitter,
     FaWhatsapp,
     FaReact,
+    FaFacebook,
 } from "react-icons/fa";
 
 const ContactSection = () => {
@@ -57,7 +58,7 @@ const ContactSection = () => {
                                 href="https://github.com/sojiburAsif"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-gray-900 transition"
+                                className="hover:text-gray-500 transition"
                                 aria-label="GitHub"
                             >
                                 <FaGithub />
@@ -66,19 +67,19 @@ const ContactSection = () => {
                                 href="https://www.instagram.com/f_asif77?igsh=MWhoN3RnazBqeHZyYw=="
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-purple-500 transition"
+                                className="hover:text-[#c22ca1] transition"
                                 aria-label="Instagram"
                             >
                                 <FaInstagram />
                             </a>
                             <a
-                                href="#"
+                                href="https://www.facebook.com/share/1JrRvtDKYi/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-purple-500 transition"
-                                aria-label="Twitter"
+                                className="hover:text-[#0e60db] transition"
+                                aria-label="Facebook"
                             >
-                                <FaTwitter />
+                                <FaFacebook />
                             </a>
                         </div>
 
