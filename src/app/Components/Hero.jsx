@@ -4,29 +4,21 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaDownload, FaGithub, FaLinkedin } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { EffectCards, Autoplay } from "swiper/modules";
 
 const socialLinks = [
   { icon: <FaGithub />, href: "https://github.com/SojiburAsif", colorClass: "text-gray-400 hover:text-white" },
   { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/sojibur-asif/", colorClass: "text-blue-600 hover:text-blue-800" },
 ];
 
-const images = [
-  "/WhatsApp Image 2025-02-21 at 09.56.05_3f7ae22e.jpg",
-  "/WhatsApp Image 2025-02-21 at 09.56.04_39418611.jpg",
-];
-
 const PortfolioBanner = () => {
   return (
-    <div className="relative  bg-gradient-to-b  font-rancho from-gray-900 to-black " id="home" style={{ backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div  className="max-w-7xl mx-auto">
-        <div className="absolute  bottom-0 left-0 right-0 h-40 sm:h-56 md:h-72 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-0" />
+    <div className="relative bg-gradient-to-b font-rancho from-gray-900 to-black" id="home" style={{ backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="absolute bottom-0 left-0 right-0 h-40 sm:h-56 md:h-72 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-0" />
         <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-800 opacity-20 rounded-full blur-3xl" />
 
         <motion.section
-          className="relative z-10 min-h-screen mt-15 flex flex-col lg:flex-row px-4 sm:px-6 lg:px-20 py-12 gap-10 bg-opacity-70"
+          className="relative z-10 md:min-h-screen lg:min-h-200 mt-15 flex flex-col lg:flex-row px-4 sm:px-6 lg:px-10 py-12 gap-10 bg-opacity-70"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -63,7 +55,7 @@ const PortfolioBanner = () => {
             </motion.div>
 
             <motion.a
-              href="/SojiburAsif-Resume.pdf"
+              href="/CV & Resume/SojiburAsif.Resume (1).pdf"
               download
               className="inline-flex items-center space-x-2 mt-4 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded text-white font-medium transition w-full md:w-[40%] lg:w-[39%] text-base md:text-lg lg:text-sm"
               initial={{ opacity: 0, y: 20 }}
@@ -85,29 +77,16 @@ const PortfolioBanner = () => {
             </motion.a>
           </div>
 
-          {/* Right Image Section */}
+          {/* Right Image Section (Normal Image) */}
           <div className="w-full lg:w-1/2 flex justify-center items-center">
-            <motion.div
-              initial={{ scale: 0.9, rotate: -5, opacity: 0 }}
-              animate={{ scale: [1, 1.1, 1], rotate: [-2, 2, -2], opacity: 1 }}
-              transition={{ delay: 0.5, duration: 4, ease: "easeInOut", repeat: Infinity }}
-              className="w-[80vw] max-w-[380px] border-3 border-purple-500 aspect-square rounded-full overflow-hidden"
-            >
-              <Swiper
-                effect="cards"
-                grabCursor
-                modules={[EffectCards, Autoplay]}
-                className="w-full h-full"
-                loop={true}
-                autoplay={{ delay: 2000, disableOnInteraction: false }}
-              >
-                {images.map((src, idx) => (
-                  <SwiperSlide key={idx} className="w-full h-full">
-                    <img src={src} alt={`Slide ${idx + 1}`} className="w-full h-full object-cover rounded-full" />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </motion.div>
+            <motion.img
+              src="/My img/Gemini_Generated_Image_c7atjkc7atjkc7at.png"
+              alt="Portfolio Image"
+              className="w-[80vw] max-w-[380px] aspect-square rounded-full object-cover border-2 border-purple-500"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            />
           </div>
         </motion.section>
       </div>

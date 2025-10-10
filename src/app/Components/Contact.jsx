@@ -7,22 +7,21 @@ import {
     FaGithub,
     FaInstagram,
     FaTwitter,
-    FaTiktok,
     FaWhatsapp,
     FaReact,
 } from "react-icons/fa";
 
 const ContactSection = () => {
     return (
-        <div id="Contact" className="py-16 bg-black font-rancho text-white">
+        <div id="Contact" className="py-16 bg-black font-rancho text-white ">
 
             {/* Title centered at the top */}
             <h1 className="flex items-center justify-center text-5xl font-bold text-white text-center mb-18 gap-3">
-                <FaReact className="text-blue-400" size={48} />
+                <FaEnvelope className="text-gray-100" size={48} />
                 Contact
             </h1>
 
-            <div className="container mx-auto px-6 md:px-12 lg:px-24">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 ">
                 <div className="flex flex-col lg:flex-row gap-10">
 
                     {/* Left: Contact Info */}
@@ -58,7 +57,7 @@ const ContactSection = () => {
                                 href="https://github.com/sojiburAsif"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-purple-500 transition"
+                                className="hover:text-gray-900 transition"
                                 aria-label="GitHub"
                             >
                                 <FaGithub />
@@ -81,7 +80,6 @@ const ContactSection = () => {
                             >
                                 <FaTwitter />
                             </a>
-                           
                         </div>
 
                         <a
@@ -92,6 +90,7 @@ const ContactSection = () => {
                             Download CV
                         </a>
                     </div>
+
                     {/* Right: Contact Form */}
                     <div className="lg:w-1/2">
                         <form className="space-y-5">
@@ -122,9 +121,7 @@ const ContactSection = () => {
                                 Submit
                             </button>
                         </form>
-
                     </div>
-
 
                 </div>
             </div>

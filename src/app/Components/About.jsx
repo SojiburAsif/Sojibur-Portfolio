@@ -22,30 +22,40 @@ const About = () => {
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <section id="about" className="relative py-20 sm:py-28 bg-gradient-to-br font-rancho from-gray-900 via-black to-gray-900 text-white overflow-hidden">
+        <section id="about" className="relative py-20 sm:py-10 bg-gradient-to-br font-rancho from-gray-900 via-black to-gray-900 text-white overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-900 opacity-30 animate-gradient-x" style={{ filter: 'blur(60px)' }} />
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-1 lg:px-4">
                 {/* Title */}
-                <motion.h1 className="flex items-center justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-12 sm:mb-20 gap-3" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
-                    <FiInfo className="text-blue-500" size={40} /> About
+                <motion.h1
+                    className="flex items-center justify-center text-4xl sm:text-5xl md:text-5xl font-bold text-center mb-12 sm:mb-20 gap-3"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                >
+                    <FiInfo className="text-gray-100" size={45} /> About
                 </motion.h1>
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
                     {/* Left */}
-                    <motion.div className="space-y-8 sm:space-y-10 max-w-full lg:max-w-4xl mx-auto" initial={{ opacity: 0, x: -60 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}>
+                    <motion.div
+                        className="space-y-8 sm:space-y-10 max-w-full lg:max-w-4xl mx-auto"
+                        initial={{ opacity: 0, x: -60 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                    >
                         <section className="text-white rounded-3xl p-6 sm:p-8 md:p-10 bg-black bg-opacity-30 backdrop-blur-md shadow-2xl">
                             <div>
                                 <h1 className="flex items-center font-bold mb-4 sm:mb-6 text-xl sm:text-2xl text-purple-600">
                                     About Me <FaArrowRight className="ml-3 text-purple-600 font-bold" />
                                 </h1>
                                 <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-4 sm:mb-6">
-                                    Sojibur Rahman - Aspiring MERN Stack Developer & CSE Diploma Student
+                                    Sojibur Rahman - Aspiring MERN Stack Developer
                                 </h2>
                                 <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
-                                    I’m Sojibur Rahman, a final-year Diploma in Computer Science student, passionate about web development. As a MERN stack developer, I build modern, efficient, and responsive web applications with a focus on real-world usability and clean code.
+                                    I’m Sojibur Rahman, passionate about web development. As a MERN stack developer, I build modern, efficient, and responsive web applications with a focus on real-world usability and clean code.
                                 </p>
                             </div>
                         </section>
@@ -56,30 +66,36 @@ const About = () => {
                         <div className="about-col-2 w-full">
                             {/* Tabs */}
                             <div className="flex space-x-8 sm:space-x-14 mb-8 sm:mb-12 border-b border-gray-600 overflow-x-auto no-scrollbar">
-                                {['Achievements', 'Education', 'Hobbies'].map(tab => (
-                                    <p key={tab} onClick={() => setActiveTab(tab)} className={`cursor-pointer font-semibold text-lg sm:text-xl pb-2 sm:pb-3 relative whitespace-nowrap ${activeTab === tab ? 'text-purple-600 after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-[calc(50%+6px)] after:bg-purple-600 after:rounded' : 'text-gray-400 hover:text-purple-600'}`}>{tab}</p>
+                                {['Achievements', 'Hobbies', 'Education'].map(tab => (
+                                    <p
+                                        key={tab}
+                                        onClick={() => setActiveTab(tab)}
+                                        className={`cursor-pointer font-semibold text-lg sm:text-xl pb-2 sm:pb-3 relative whitespace-nowrap ${activeTab === tab
+                                                ? 'text-purple-600 after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-[calc(50%+6px)] after:bg-purple-600 after:rounded'
+                                                : 'text-gray-400 hover:text-purple-600'
+                                            }`}
+                                    >
+                                        {tab}
+                                    </p>
                                 ))}
                             </div>
 
                             {/* Tab Content */}
-                            <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.3 }} className="min-h-[180px] text-sm sm:text-base md:text-lg">
+                            <motion.div
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.3 }}
+                                className="min-h-[180px] text-sm sm:text-base md:text-lg"
+                            >
                                 {activeTab === 'Achievements' && (
                                     <ul className="list-disc list-inside space-y-3 text-gray-300 leading-relaxed">
+                                        <li>Blackbelt Achievement (Web Development) - Programming Hero | Sep 2025</li>
+                                        <li>Complete Web Development Course (MERN Stack) - Programming Hero | Jul 2025</li>
+                                        <li>Microsoft Office (Computer Applications) - Bangladesh Technical Education Board | Jun 2021</li>
                                         <li>Completed multiple MERN stack projects demonstrating coding skills.</li>
-                                        <li>Successfully contributed to open-source projects.</li>
-                                        <li>Awarded best project in the final year of Diploma.</li>
-                                        <li>Proficient in MS Word, Excel, and PowerPoint.</li>
                                         <li>Knowledgeable in Digital Marketing.</li>
-                                    </ul>
-                                )}
-
-                                {activeTab === 'Education' && (
-                                    <ul className="list-disc list-inside space-y-3 text-gray-300 leading-relaxed">
-                                        <li>Diploma in Computer Science Engineering (Final Year)</li>
-                                        <li>Started SSC in 2022</li>
-                                        <li>SSC GPA: 5.00</li>
-                                        <li>Currently in Diploma Final Year</li>
-                                        <li>Relevant Coursework: Data Structures, Web Development</li>
                                     </ul>
                                 )}
 
@@ -91,18 +107,28 @@ const About = () => {
                                         <li>Bike Riding: Enjoying adventurous rides and exploring new paths.</li>
                                     </ul>
                                 )}
+
+                                {activeTab === 'Education' && (
+                                    <ul className="list-disc list-inside space-y-3 text-gray-300 leading-relaxed">
+                                        <li>Diploma in Computer Science Engineering (Final Year)</li>
+                                        <li>Started SSC in 2022</li>
+                                        <li>SSC GPA: 5.00</li>
+                                        <li>Relevant Coursework: Data Structures, Web Development</li>
+                                    </ul>
+                                )}
                             </motion.div>
                         </div>
                     </section>
                 </div>
 
                 {/* View More */}
-                <div className="mt-10 flex justify-center">
+                <div className="mt-5 flex justify-center">
                     <button onClick={openModal} className="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded text-white font-semibold transition">
                         View More
                     </button>
                 </div>
             </div>
+
 
             {/* Modal */}
             <AnimatePresence>
@@ -110,7 +136,7 @@ const About = () => {
                     <motion.div className="fixed inset-0 bg-transparent backdrop-blur-md flex justify-center items-center z-50 p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                         <motion.div className="bg-gray-900 bg-opacity-90 rounded-lg w-full max-w-2xl max-h-[85vh] overflow-y-auto p-8 relative shadow-2xl" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }}>
                             {/* Close Btn */}
-                            <button onClick={closeModal} className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold" aria-label="Close Modal">&times;</button>
+                            <button onClick={closeModal} className="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-bold" aria-label="Close Modal">&times;</button>
 
                             {/* Modal Content */}
                             <section>
