@@ -1,4 +1,4 @@
-'use client'; // 🔥 Must be first line
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -18,7 +18,7 @@ const Header = () => {
 
   const handleClick = (id) => {
     setActive(id);
-    setIsOpen(false); // close mobile menu after clicking
+    setIsOpen(false); 
   };
 
   useEffect(() => {
@@ -117,7 +117,7 @@ const Header = () => {
           ))}
 
           <Link
-            href="/public/CV & Resume/SojiburAsif.CV (1).pdf"
+            href="/CV & Resume/SojiburAsif.CV (1).pdf"
             download
             className="flex items-center gap-2 mt-4 text-sm font-semibold px-4 py-2 rounded hover:bg-purple-600/10 transition-all border border-purple-500"
           >

@@ -72,7 +72,7 @@ const SkillsSection = ({ title, skills }) => {
   });
 
   return (
-    <div className="mb-12 max-w-7xl mx-auto px-16" ref={ref}>
+    <div className="mb-12 max-w-7xl mx-auto md:px-16 px-4" ref={ref}>
       <h3 className="text-2xl font-semibold text-purple-400 mb-6 text-center lg:text-left">{title}</h3>
       <motion.div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8"

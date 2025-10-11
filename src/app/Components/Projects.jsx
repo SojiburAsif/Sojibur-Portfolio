@@ -20,6 +20,7 @@ import Project3 from '../Projects/project3';
 import project1Img from '../../../public/Project-1/img1.png';
 import project2Img from '../../../public/Project-2/img11.png';
 import project3Img from '../../../public/project-3/img1.png';
+import Link from 'next/link';
 
 const iconMap = {
     React: <FaReact className="inline-block text-blue-400 mr-1" size={14} />,
@@ -80,7 +81,7 @@ const Projects = () => {
             </h1>
 
             {/* Card grid */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-16">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:px-16 px-5">
                 {projects.map((proj, index) => (
                     <article
                         key={index}
@@ -148,12 +149,12 @@ const Projects = () => {
             )}
             {/* View More Projects Button */}
             <div className="mt-10 flex justify-center">
-                <a
-                    href="/all-projects" // change this to your full projects page route
+                <Link
+                    href="../allProjects" // change this to your full projects page route
                     className="px-8 py-3 border border-white hover:bg-purple-500 rounded text-white font-semibold text-lg transition-transform transform "
                 >
                     View More Projects →
-                </a>
+                </Link>
             </div>
         </section>
     );

@@ -55,7 +55,7 @@ const Certificate = () => {
             </div>
 
             {/* Certificates Grid */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-17">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:px-17 px-10">
                 {certificates.slice(0, 3).map((cert, idx) => (
                     <div
                         key={idx}
