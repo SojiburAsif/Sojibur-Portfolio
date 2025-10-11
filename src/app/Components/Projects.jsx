@@ -12,7 +12,6 @@ import {
     SiStripe,
 } from 'react-icons/si';
 
-// make sure these paths match your project files (fix case if needed)
 import Project1 from '../Projects/Project1';
 import Project2 from '../Projects/Project2';
 import Project3 from '../Projects/project3';
@@ -20,7 +19,6 @@ import Project3 from '../Projects/project3';
 import project1Img from '../../../public/Project-1/img1.png';
 import project2Img from '../../../public/Project-2/img11.png';
 import project3Img from '../../../public/project-3/img1.png';
-import Link from 'next/link';
 
 const iconMap = {
     React: <FaReact className="inline-block text-blue-400 mr-1" size={14} />,
@@ -40,7 +38,6 @@ const projects = [
         component: Project1,
         description:
             'Workfleed is a role-based employee management system with dashboards for Employees, HR, and Admin. It supports payroll handling, real-time updates, and task tracking.',
-
         technologies: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Firebase', 'JWT', 'Stripe'],
     },
     {
@@ -50,7 +47,6 @@ const projects = [
         component: Project2,
         description:
             'A platform where users can add, manage, and book services. It supports dashboards, bookings, real-time updates, and more.',
-
         technologies: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Firebase', 'JWT'],
     },
     {
@@ -60,13 +56,13 @@ const projects = [
         component: Project3,
         description:
             'A platform that helps individuals find freelancers for small tasks. Users can post tasks, bid, and connect based on skills, budget, and deadlines.',
-
         technologies: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Firebase', 'JWT'],
     },
 ];
 
 const Projects = () => {
-    const [activeProject, setActiveProject] = useState(null); // holds project object
+    const [activeProject, setActiveProject] = useState(null);
+    const [viewAllOpen, setViewAllOpen] = useState(false); // NEW state for modal
 
     const ActiveComponent = activeProject ? activeProject.component : null;
 
@@ -75,7 +71,6 @@ const Projects = () => {
             id="Projects"
             className="scroll-mt-24 bg-gradient-to-br from-gray-900 via-black bg-black text-white py-12 font-rancho"
         >
-            {/* Title */}
             <h1 className="text-4xl md:text-5xl text-center font-bold mb-8 flex items-center justify-center gap-3">
                 <FiFolder className="text-blue-500" size={36} /> My Projects
             </h1>
@@ -88,17 +83,13 @@ const Projects = () => {
                         className="bg-[#0b1220] rounded-xl overflow-hidden shadow-lg border border-gray-800 transform transition hover:-translate-y-2 flex flex-col"
                         style={{ minHeight: '330px' }}
                     >
-                        {/* banner */}
                         <div className="relative w-full h-48">
                             <Image src={proj.banner} alt={proj.title} fill className="object-cover" />
                         </div>
-
                         <div className="p-5 flex flex-col justify-between flex-grow">
                             <div>
                                 <h3 className="text-lg md:text-xl font-semibold mb-1 leading-tight">{proj.title}</h3>
                                 <p className="text-purple-400 italic text-sm mb-3 truncate">{proj.subtitle}</p>
-
-                                {/* Technologies */}
                                 <div className="flex flex-wrap gap-2 mb-4 max-w-full overflow-hidden">
                                     {proj.technologies.map((tech, i) => (
                                         <span
@@ -111,7 +102,6 @@ const Projects = () => {
                                     ))}
                                 </div>
                             </div>
-
                             <button
                                 onClick={() => setActiveProject(proj)}
                                 className="mt-auto w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
@@ -124,7 +114,17 @@ const Projects = () => {
                 ))}
             </div>
 
-            {/* Modal — ONLY render the imported component inside here */}
+            {/* View All Projects Button */}
+            <div className="mt-10 flex justify-center">
+                <button
+                    onClick={() => setViewAllOpen(true)}
+                    className="px-8 py-3 border border-white hover:bg-purple-500 rounded text-white font-semibold text-lg transition-transform transform"
+                >
+                    View All Projects →
+                </button>
+            </div>
+
+            {/* Modal for Active Project */}
             {activeProject && (
                 <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/70">
                     <div className="bg-[#0b1220] w-full max-w-7xl max-h-[110vh] overflow-y-auto rounded-lg relative shadow-2xl">
@@ -135,27 +135,45 @@ const Projects = () => {
                         >
                             ✕
                         </button>
-
-                        {/* ========= HERE: render only the imported component ========= */}
                         <div className="p-0">
-                            {ActiveComponent ? (
-                                // pass project as prop in case the imported component expects data
-                                <ActiveComponent project={activeProject} />
-                            ) : null}
+                            {ActiveComponent ? <ActiveComponent project={activeProject} /> : null}
                         </div>
-                        {/* ============================================================ */}
                     </div>
                 </div>
             )}
-            {/* View More Projects Button */}
-            <div className="mt-10 flex justify-center">
-                <Link
-                    href="../allProjects" // change this to your full projects page route
-                    className="px-8 py-3 border border-white hover:bg-purple-500 rounded text-white font-semibold text-lg transition-transform transform "
-                >
-                    View More Projects →
-                </Link>
-            </div>
+
+            {/* Modal for View All Projects */}
+            {viewAllOpen && (
+                <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/70">
+                    <div className="bg-[#0b1220] w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg relative shadow-2xl p-5">
+                        <button
+                            onClick={() => setViewAllOpen(false)}
+                            className="absolute right-4 top-4 text-white text-2xl font-bold z-50"
+                            aria-label="Close modal"
+                        >
+                            ✕
+                        </button>
+                        <h2 className="text-2xl font-bold text-center mb-4">All Projects</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {projects.map((proj, i) => (
+                                <div
+                                    key={i}
+                                    className="bg-gray-900 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-gray-800 transition"
+                                    onClick={() => { setActiveProject(proj); setViewAllOpen(false); }}
+                                >
+                                    <div className="relative w-20 h-20 flex-shrink-0">
+                                        <Image src={proj.banner} alt={proj.title} fill className="object-cover rounded" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold">{proj.title}</h3>
+                                        <p className="text-xs text-purple-400">{proj.subtitle}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };
