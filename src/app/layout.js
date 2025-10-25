@@ -29,8 +29,9 @@ export default function RootLayout({ children }) {
       <head>
 
       </head>
-      <body className={`${saira.variable} antialiased`}>
-   
+      <body className={`${saira.variable} antialiased bg-black text-white`}>
+
+
         <ThemeProvider>
           <Header />
           {children}
