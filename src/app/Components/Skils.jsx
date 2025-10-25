@@ -25,29 +25,30 @@ import {
 import { FiLayers } from 'react-icons/fi';
 
 // Frontend Skills
+// Frontend Skills
 const frontendSkills = [
-  { name: 'React.js', icon: <FaReact className="text-cyan-400" /> },
-  { name: 'Next.js', icon: <SiNextdotjs className="text-white" /> },
-  { name: 'JavaScript', icon: <FaJsSquare className="text-yellow-400" /> },
-  { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" /> },
-  { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" /> },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-400" /> },
-  { name: 'React Router', icon: <SiReactrouter className="text-pink-500" /> },
+  { name: 'React.js', icon: <FaReact className="text-cyan-400" />, url: 'https://react.dev/' },
+  { name: 'Next.js', icon: <SiNextdotjs className="text-white" />, url: 'https://nextjs.org/' },
+  { name: 'JavaScript', icon: <FaJsSquare className="text-yellow-400" />, url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+  { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" />, url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+  { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" />, url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-400" />, url: 'https://tailwindcss.com/' },
+  { name: 'React Router', icon: <SiReactrouter className="text-pink-500" />, url: 'https://reactrouter.com/' },
 ];
 
 // Backend Skills
 const backendSkills = [
-  { name: 'Node.js', icon: <FaNode className="text-green-600" /> },
-  { name: 'Express.js', icon: <SiExpress className="text-gray-200" /> },
-  { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
-  { name: 'Firebase', icon: <SiFirebase className="text-yellow-500" /> },
-  { name: 'SQL', icon: <SiMysql className="text-blue-500" /> },
+  { name: 'Node.js', icon: <FaNode className="text-green-600" />, url: 'https://nodejs.org/' },
+  { name: 'Express.js', icon: <SiExpress className="text-gray-200" />, url: 'https://expressjs.com/' },
+  { name: 'MongoDB', icon: <SiMongodb className="text-green-500" />, url: 'https://www.mongodb.com/' },
+  { name: 'Firebase', icon: <SiFirebase className="text-yellow-500" />, url: 'https://firebase.google.com/' },
+  { name: 'SQL', icon: <SiMysql className="text-blue-500" />, url: 'https://www.mysql.com/' },
 ];
 
 // Tools
 const tools = [
-  { name: 'Git', icon: <FaGitAlt className="text-red-500" /> },
-  { name: 'GitHub', icon: <FaGithub className="text-white" /> },
+  { name: 'Git', icon: <FaGitAlt className="text-red-500" />, url: 'https://git-scm.com/' },
+  { name: 'GitHub', icon: <FaGithub className="text-white" />, url: 'https://github.com/' },
 ];
 
 const containerVariants = {
@@ -72,7 +73,7 @@ const SkillsSection = ({ title, skills }) => {
   });
 
   return (
-    <div className="mb-12 max-w-7xl mx-auto md:px-16 px-4" ref={ref}>
+    <div className="mb-12 max-w-7xl mx-auto md:px-14 px-4" ref={ref}>
       <h3 className="text-2xl font-semibold text-purple-400 mb-6 text-center lg:text-left">{title}</h3>
       <motion.div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8"
@@ -81,17 +82,21 @@ const SkillsSection = ({ title, skills }) => {
         animate={inView ? 'visible' : 'hidden'}
       >
         {skills.map((skill, idx) => (
-          <motion.div
+          <motion.a
             key={idx}
-            className="flex flex-col items-center justify-center p-5 sm:p-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-xl shadow-lg cursor-default"
+            href={skill.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center p-5 sm:p-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-xl shadow-lg cursor-pointer"
             variants={itemVariants}
             whileHover={{ scale: 1.1 }}
             transition={{ type: 'spring', stiffness: 200, damping: 15 }}
           >
             <div className="text-4xl sm:text-5xl mb-3">{skill.icon}</div>
             <p className="text-sm sm:text-lg font-medium text-white">{skill.name}</p>
-          </motion.div>
+          </motion.a>
         ))}
+
       </motion.div>
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   FaBars,
   FaDownload,
@@ -11,6 +11,8 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from '../Components/ThemeToggle';
 
 const Header = () => {
   const [active, setActive] = useState('home');
@@ -18,12 +20,8 @@ const Header = () => {
 
   const handleClick = (id) => {
     setActive(id);
-    setIsOpen(false); 
+    setIsOpen(false);
   };
-
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
-  }, []);
 
   const links = [
     { id: 'home', label: 'Home', href: '#home' },
@@ -48,84 +46,116 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full bg-black fixed top-0 left-0 z-50 shadow-md">
+    <header className="w-full bg-black text-white fixed top-0 left-0 z-50 shadow-md">
       <div className="mx-auto max-w-7xl pr-4 md:pr-0">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="text-xl font-bold text-purple-400">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-xl font-bold text-purple-400"
+          >
             <img src="Logo/logo.png" alt="Logo" className="h-19 w-auto" />
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            {links.map((link) => (
-              <a
+            {links.map((link, index) => (
+              <motion.a
                 key={link.id}
                 href={link.href}
                 onClick={() => handleClick(link.id)}
-                className={`flex items-center gap-2 relative text-gray-300 font-medium transition-all duration-300 hover:text-purple-400
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`flex items-center gap-2 relative font-medium transition-all duration-300 hover:text-purple-400
                   after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-purple-500
                   after:w-0 hover:after:w-full after:transition-all after:duration-300
-                  ${active === link.id ? 'text-purple-400 after:w-full' : ''}`}
+                  ${active === link.id ? 'text-purple-400 after:w-full' : 'text-white/80'}`}
               >
                 {getIcon(link.id)}
                 {link.label}
-              </a>
+              </motion.a>
             ))}
           </nav>
 
-          {/* CV Button (Desktop) */}
+          {/* Right controls: Theme toggle + CV Button (Desktop) */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link
-              href="/SojiburAsif.CV (1).pdf"
-              download
-              className="flex p-2 items-center space-x-2 text-sm font-semibold text-white rounded hover:bg-gray-900 border border-purple-500 transition-all"
+            {/* <ThemeToggle /> */}
+
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center space-x-4"
             >
-              <FaDownload className="w-4 h-4 text-purple-500" />
-              <span>Download CV</span>
-            </Link>
+              <Link
+                href="/SojiburAsif.CV (1).pdf"
+                download
+                className="flex p-2 items-center space-x-2 text-sm font-semibold rounded hover:bg-purple-600/10 border border-purple-500 transition-all"
+              >
+                <FaDownload className="w-4 h-4 text-purple-500" />
+                <span>Download CV</span>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div
-            className="lg:hidden text-white text-2xl cursor-pointer"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
+          <div className="lg:hidden flex items-center gap-4">
+            {/* <ThemeToggle /> */}
+
+            <div
+              className="text-2xl cursor-pointer"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Side Drawer */}
-      <div
-        className={`lg:hidden fixed top-20 right-0 w-3/4 max-w-xs h-full bg-black z-40 shadow-lg border-l border-purple-900 transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : 'translate-x-full opacity-0 pointer-events-none'}`}
-      >
-        <div className="flex flex-col items-start py-6 px-6 space-y-4">
-          {links.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={() => handleClick(link.id)}
-              className={`flex items-center gap-3 w-full text-lg font-medium transition-colors duration-200
-                ${active === link.id ? 'text-purple-400' : 'text-gray-300 hover:text-purple-400'}`}
-            >
-              {getIcon(link.id)}
-              {link.label}
-            </a>
-          ))}
-
-          <Link
-            href="/CV & Resume/SojiburAsif.CV (1).pdf"
-            download
-            className="flex items-center gap-2 mt-4 text-sm font-semibold px-4 py-2 rounded hover:bg-purple-600/10 transition-all border border-purple-500"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.4 }}
+            className="lg:hidden fixed top-20 right-0 w-3/4 max-w-xs h-full bg-black text-white z-40 shadow-lg border-l border-purple-900"
           >
-            <FaDownload className="w-4 h-4 text-purple-500" />
-            Download CV
-          </Link>
-        </div>
-      </div>
+            <div className="flex flex-col items-start py-6 px-6 space-y-4">
+              {links.map((link) => (
+                <motion.a
+                  key={link.id}
+                  href={link.href}
+                  onClick={() => handleClick(link.id)}
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 50, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className={`flex items-center gap-3 w-full text-lg font-medium transition-colors duration-200
+                    ${active === link.id ? 'text-purple-400' : 'text-white/80 hover:text-purple-400'}`}
+                >
+                  {getIcon(link.id)}
+                  {link.label}
+                </motion.a>
+              ))}
+
+              <Link
+                href="/CV & Resume/SojiburAsif.CV (1).pdf"
+                download
+                className="flex items-center gap-2 mt-4 text-sm font-semibold px-4 py-2 rounded hover:bg-purple-600/10 transition-all border border-purple-500"
+              >
+                <FaDownload className="w-4 h-4 text-purple-500" />
+                Download CV
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

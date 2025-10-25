@@ -3,7 +3,7 @@
 
 
 @import "tailwindcss";
-
+@plugin "daisyui";
 :root {
   font-family: var(--font-saira), sans-serif;
 }

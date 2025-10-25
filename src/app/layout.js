@@ -1,8 +1,11 @@
-// src/app/layout.js (server component)
+// src/app/layout.js
 import { Saira } from "next/font/google";
 import "./globals.css";
 import Header from "./Header/Header";
 import Fooder from "./Fooder/Footer";
+import ThemeProvider from "./Components/ThemeProvider";
+
+
 
 const saira = Saira({
   subsets: ["latin"],
@@ -10,12 +13,11 @@ const saira = Saira({
   variable: "--font-saira",
 });
 
-// ✅ metadata with proper icons
 export const metadata = {
   title: "Sojibur Asif",
   description: "Personal Portfolio",
   icons: {
-    icon: "/logo.png",        // must be inside public folder
+    icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
@@ -24,10 +26,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+
+      </head>
       <body className={`${saira.variable} antialiased`}>
-        <Header />
-        {children}
-        <Fooder />
+   
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Fooder />
+        </ThemeProvider>
       </body>
     </html>
   );
