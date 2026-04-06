@@ -105,6 +105,7 @@ This is a **professional portfolio website** that serves as a digital resume and
 ```
 my-app/
 ├── public/
+<<<<<<< HEAD
 │   ├── Certificate/                 # Certificate images/PDFs
 │   ├── CV & Resume/                 # Resume file
 │   ├── Logo/                        # Logos and branding
@@ -156,6 +157,59 @@ my-app/
 ├── next-env.d.ts                    # TypeScript definitions for Next.js
 ├── package.json                     # Project dependencies
 └── README.md                        # This file
+=======
+│   ├── Certificate/                 # Certificate images/PDFs
+│   ├── CV & Resume/                 # Resume file
+│   ├── Logo/                        # Logos and branding
+│   ├── My img/                      # Profile images
+│   ├── Project-1/                   # Workfleed project images
+│   │   └── img1.png
+│   ├── Project-2/                   # Service Sharing project images
+│   │   └── img11.png
+│   └── project-3/                   # Micro Freelance project images
+│       └── img1.png
+│
+├── src/
+│   └── app/
+│       ├── layout.js                # Root layout wrapper
+│       ├── page.js                  # Home page (main portfolio)
+│       ├── loading.jsx              # Loading state component
+│       ├── globals.css              # Global styles
+│       │
+│       ├── lib/
+│       │   └── theme.js             # Theme configuration
+│       │
+│       ├── Components/
+│       │   ├── Hero.jsx             # Hero banner section
+│       │   ├── About.jsx            # About section
+│       │   ├── Skils.jsx            # Skills section
+│       │   ├── Projects.jsx         # Projects grid section
+│       │   ├── Certificate.jsx      # Certificates section
+│       │   ├── Contact.jsx          # Contact form section
+│       │   ├── ThemeProvider.jsx    # Theme context provider
+│       │   ├── ThemeToggle.jsx      # Theme toggle button
+│       │   └── StarsBG.js           # Animated stars background
+│       │
+│       ├── Header/
+│       │   └── Header.jsx           # Navigation header
+│       │
+│       ├── Fooder/
+│       │   └── Footer.jsx           # Footer component
+│       │
+│       └── Projects/
+│           ├── Project1.jsx         # Workfleed detailed view
+│           ├── Project2.jsx         # Service Sharing detailed view
+│           └── project3.jsx         # Micro Freelance detailed view
+│
+├── eslint.config.mjs                # ESLint configuration
+├── next.config.mjs                  # Next.js configuration
+├── tailwind.config.js               # Tailwind CSS configuration
+├── postcss.config.mjs               # PostCSS configuration
+├── jsconfig.json                    # JavaScript path aliases
+├── next-env.d.ts                    # TypeScript definitions for Next.js
+├── package.json                     # Project dependencies
+└── README.md                        # This file
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 ```
 
 ---
@@ -276,6 +330,7 @@ The build process creates:
 ### 🎯 Hero Section (`Hero.jsx`)
 **Purpose:** First impression and introduction
 - **Features:**
+<<<<<<< HEAD
   - Animated gradient background
   - Typewriter effect showing job titles
   - Professional introduction text
@@ -289,10 +344,26 @@ The build process creates:
   - Location: Bangladesh
   - Social Links: GitHub, LinkedIn
   - Resume Download: Available in PDF format
+=======
+  - Animated gradient background
+  - Typewriter effect showing job titles
+  - Professional introduction text
+  - Social media links (GitHub, LinkedIn)
+  - Download Resume button
+  - Call-to-action buttons
+
+- **Key Elements:**
+  - Name: "Sojibur Rahman Asif"
+  - Title: "MERN Stack Developer | Web Application Developer"
+  - Location: Bangladesh
+  - Social Links: GitHub, LinkedIn
+  - Resume Download: Available in PDF format
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ### 👤 About Section (`About.jsx`)
 **Purpose:** Personal and professional background
 - **Features:**
+<<<<<<< HEAD
   - Tab-based content (Achievements, Education, Work)
   - Animated content transitions
   - Personal information display
@@ -305,40 +376,84 @@ The build process creates:
   - Educational qualifications
   - Professional experience
   - Interests and passions
+=======
+  - Tab-based content (Achievements, Education, Work)
+  - Animated content transitions
+  - Personal information display
+  - Educational background
+  - Work experience
+  - Personal interests and hobbies
+
+- **Content Areas:**
+  - Personal overview
+  - Educational qualifications
+  - Professional experience
+  - Interests and passions
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ### 💻 Skills Section (`Skils.jsx`)
 **Purpose:** Technical expertise showcase
 - **Displays:**
+<<<<<<< HEAD
   - Frontend technologies (React, Tailwind CSS, etc.)
   - Backend technologies (Node.js, MongoDB, etc.)
   - Tools and databases
   - Proficiency levels
+=======
+  - Frontend technologies (React, Tailwind CSS, etc.)
+  - Backend technologies (Node.js, MongoDB, etc.)
+  - Tools and databases
+  - Proficiency levels
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ### 🎨 Projects Section (`Projects.jsx`)
 **Purpose:** Showcase major work and achievements
 - **Features:**
+<<<<<<< HEAD
   - Grid layout of project cards
   - Project images with hover effects
   - Technology badges
   - Detailed project modals
   - View project details button
   - Live demo and GitHub links
+=======
+  - Grid layout of project cards
+  - Project images with hover effects
+  - Technology badges
+  - Detailed project modals
+  - View project details button
+  - Live demo and GitHub links
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ### 🏆 Certificate Section (`Certificate.jsx`)
 **Purpose:** Display professional certifications
 - **Features:**
+<<<<<<< HEAD
   - Certificate image gallery
   - Certificate descriptions
   - Achievement dates
   - Interactive gallery view
+=======
+  - Certificate image gallery
+  - Certificate descriptions
+  - Achievement dates
+  - Interactive gallery view
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ### 📧 Contact Section (`Contact.jsx`)
 **Purpose:** Enable user communication
 - **Features:**
+<<<<<<< HEAD
   - Contact form with validation
   - Email sending capability
   - Success/error notifications (SweetAlert2)
   - Form reset after submission
+=======
+  - Contact form with validation
+  - Email sending capability
+  - Success/error notifications (SweetAlert2)
+  - Form reset after submission
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ---
 
@@ -350,12 +465,21 @@ The build process creates:
 
 - **Description:** Comprehensive employee management system with role-based dashboards
 - **Features:**
+<<<<<<< HEAD
   - Employee Dashboard (task tracking, profile management)
   - HR Dashboard (payroll, team management, leave approve)
   - Admin Dashboard (full system control, analytics)
   - Real-time updates using Firebase
   - Stripe payment integration for payroll
   - JWT authentication
+=======
+  - Employee Dashboard (task tracking, profile management)
+  - HR Dashboard (payroll, team management, leave approve)
+  - Admin Dashboard (full system control, analytics)
+  - Real-time updates using Firebase
+  - Stripe payment integration for payroll
+  - JWT authentication
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 - **Technologies:** React, Node.js, MongoDB, Firebase, JWT, Stripe, Tailwind CSS
 - **Users:** Employees, HR, Admin roles
 - **Key Functionality:** Payroll handling, task tracking, leave management, real-time notifications
@@ -366,12 +490,21 @@ The build process creates:
 
 - **Description:** Platform for users to add, manage, and book services
 - **Features:**
+<<<<<<< HEAD
   - Service listing and management
   - Booking system with status tracking
   - User dashboards
   - Real-time notifications
   - Service provider profiles
   - Rating and review system
+=======
+  - Service listing and management
+  - Booking system with status tracking
+  - User dashboards
+  - Real-time notifications
+  - Service provider profiles
+  - Rating and review system
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 - **Technologies:** React, Node.js, MongoDB, Firebase, JWT, Tailwind CSS
 - **Users:** Service providers, customers
 - **Key Functionality:** Service CRUD, booking management, provider profiles, reviews
@@ -382,12 +515,21 @@ The build process creates:
 
 - **Description:** Connect individuals with freelancers for small tasks
 - **Features:**
+<<<<<<< HEAD
   - Task posting by clients
   - Freelancer bidding system
   - Skill-based matching
   - Budget and deadline filtering
   - Direct messaging
   - Dispute resolution
+=======
+  - Task posting by clients
+  - Freelancer bidding system
+  - Skill-based matching
+  - Budget and deadline filtering
+  - Direct messaging
+  - Dispute resolution
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 - **Technologies:** React, Node.js, MongoDB, Firebase, JWT, Tailwind CSS
 - **Users:** Clients, Freelancers
 - **Key Functionality:** Task posting, bidding, messaging, ratings, payments
@@ -413,8 +555,13 @@ I am from [Your Country], passionate about...
 **2. Update Social Links** (`src/app/Components/Hero.jsx`)
 ```javascript
 const socialLinks = [
+<<<<<<< HEAD
   { icon: <FaGithub />, href: "https://github.com/YourUsername" },
   { icon: <FaLinkedin />, href: "https://linkedin.com/in/YourProfile" },
+=======
+  { icon: <FaGithub />, href: "https://github.com/YourUsername" },
+  { icon: <FaLinkedin />, href: "https://linkedin.com/in/YourProfile" },
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 ];
 ```
 
@@ -428,6 +575,7 @@ const socialLinks = [
 **Edit Projects** (`src/app/Components/Projects.jsx`)
 ```javascript
 const projects = [
+<<<<<<< HEAD
   {
     title: 'Your Project Title',
     subtitle: 'Project Subtitle',
@@ -436,6 +584,16 @@ const projects = [
     description: 'Project description...',
     technologies: ['Tech1', 'Tech2', 'Tech3'],
   },
+=======
+  {
+    title: 'Your Project Title',
+    subtitle: 'Project Subtitle',
+    banner: project1Img,
+    component: Project1,
+    description: 'Project description...',
+    technologies: ['Tech1', 'Tech2', 'Tech3'],
+  },
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 ];
 ```
 
@@ -451,8 +609,13 @@ className="bg-purple-600" → className="bg-blue-600"
 ```css
 /* Customize color variables */
 :root {
+<<<<<<< HEAD
   --primary: #a855f7; /* Purple */
   --secondary: #050f1a; /* Dark blue-black */
+=======
+  --primary: #a855f7; /* Purple */
+  --secondary: #050f1a; /* Dark blue-black */
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 }
 ```
 
@@ -472,6 +635,7 @@ className="bg-purple-600" → className="bg-blue-600"
 ### Implemented Optimizations
 
 1. **Image Optimization**
+<<<<<<< HEAD
    - Using Next.js Image component for lazy loading
    - Automatic format conversion (WebP)
    - Responsive sizing
@@ -494,6 +658,30 @@ className="bg-purple-600" → className="bg-blue-600"
    - Framer Motion GPU-accelerated
    - transform and opacity for animations
    - Will-change CSS properties
+=======
+   - Using Next.js Image component for lazy loading
+   - Automatic format conversion (WebP)
+   - Responsive sizing
+
+2. **Code Splitting**
+   - Automatic chunk splitting by Next.js
+   - Dynamic imports for heavy components
+   - Route-based code splitting
+
+3. **CSS Optimization**
+   - Tailwind CSS purges unused styles
+   - DaisyUI provides optimized components
+   - PostCSS compilation
+
+4. **Font Optimization**
+   - Using Geist font family (optimized)
+   - Minimal font files
+
+5. **Animation Performance**
+   - Framer Motion GPU-accelerated
+   - transform and opacity for animations
+   - Will-change CSS properties
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
 
 ### Performance Tips
 
@@ -746,6 +934,9 @@ npm run build
 **Last Updated:** April 6, 2026
 **Version:** 1.0.0
 **Maintainer:** Sojibur Rahman Asif
+<<<<<<< HEAD
 aita acon amr project a ase.
 
 ar ami aitai update korbo to amake acon pront banai dao
+=======
+>>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
