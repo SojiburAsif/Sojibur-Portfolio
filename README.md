@@ -935,8 +935,3 @@ npm run build
 **Version:** 1.0.0
 **Maintainer:** Sojibur Rahman Asif
 <<<<<<< HEAD
-aita acon amr project a ase.
-
-ar ami aitai update korbo to amake acon pront banai dao
-=======
->>>>>>> 8e83850b3164ae19b17af97b1c967f73d5f1f9d2
