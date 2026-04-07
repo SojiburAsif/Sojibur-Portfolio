@@ -25,7 +25,7 @@ import Macro from '../Projects/Macro';
 // Project Images Import
 import project1Img from '../../../public/Project-1/img1.png';
 import project2Img from '../../../public/Project-4/img1.png';
-import project3Img from '../../../public/project-3/img1.png'; 
+import project3Img from '../../../public/Project-3/img1.png'; 
 import macroImg from '../../../public/Project-2/img11.png'; 
 
 const iconMap = {

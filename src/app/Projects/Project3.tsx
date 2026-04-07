@@ -61,7 +61,7 @@ const Project3 = () => {
                     <SwiperSlide key={num} className="bg-black flex items-center justify-center">
                       <div className="relative w-full h-full">
                         <Image
-                          src={`/project-3/img${num}.png`}
+                          src={`/Project-3/img${num}.png`}
                           alt={`ServZen screenshot ${num}`}
                           fill
                           className="object-contain md:object-cover"
