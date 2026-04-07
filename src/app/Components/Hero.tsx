@@ -1,119 +1,175 @@
 'use client';
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useInView, useSpring } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import { FaDownload, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaDownload, FaGithub, FaLinkedin, FaReact, FaNodeJs, FaBriefcase } from "react-icons/fa";
+import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiPrisma } from "react-icons/si";
 
-const socialLinks = [
-  { icon: <FaGithub />, href: "https://github.com/SojiburAsif", colorClass: "text-gray-400 hover:text-white" },
-  { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/sojibur-asif/", colorClass: "text-blue-600 hover:text-blue-800" },
+// আইকন ডেটা - মোবাইল পজিশন (top) বাড়ানো হয়েছে যাতে নিচে নামে
+const floatingIcons = [
+  { icon: <FaReact />, pos: "top-[10%] left-[8%] md:top-[10%] md:left-[5%]", size: "text-4xl md:text-5xl", color: "text-cyan-500/40" },
+  { icon: <SiNextdotjs />, pos: "top-[35%] left-[80%] md:top-[20%] md:left-[85%]", size: "text-3xl md:text-4xl", color: "text-white/30" },
+  { icon: <FaNodeJs />, pos: "top-[38%] left-[8%] md:top-[75%] md:left-[10%]", size: "text-4xl md:text-5xl", color: "text-green-500/30" },
+  { icon: <SiTypescript />, pos: "top-[48%] left-[92%] md:top-[65%] md:left-[80%]", size: "text-3xl md:text-4xl", color: "text-blue-500/30" },
+  { icon: <SiTailwindcss />, pos: "hidden lg:block md:top-[45%] md:left-[90%]", size: "text-4xl", color: "text-sky-400/30" },
+  { icon: <SiPostgresql />, pos: "top-[72%] left-[90%] md:top-[85%] md:left-[55%]", size: "text-4xl md:text-5xl", color: "text-white/80" }, 
+  { icon: <SiPrisma />, pos: "top-[8%] left-[85%] md:top-[15%] md:left-[45%]", size: "text-3xl md:text-4xl", color: "text-white/80" },      
 ];
 
 const PortfolioBanner = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-100px" });
+  
+  const springConfig = { stiffness: 100, damping: 30 };
+  const mouseX = useSpring(0, springConfig);
+  const mouseY = useSpring(0, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth - 0.5) * 50;
+      const y = (clientY / window.innerHeight - 0.5) * 50;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   return (
-    <div className="relative bg-gradient-to-b font-rancho from-gray-900 to-black" id="home" style={{ backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="absolute bottom-0 left-0 right-0 h-40 sm:h-56 md:h-72 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-0" />
-        <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-800 opacity-20 rounded-full blur-3xl" />
+    <div className="relative min-h-screen bg-[#000000] overflow-hidden font-rancho" id="home" ref={ref}>
+      
+      {/* ১. ভাসমান আইকনসমূহ */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {floatingIcons.map((item, idx) => (
+          <motion.div
+            key={idx}
+            className={`absolute ${item.pos} ${item.size} ${item.color} filter blur-[0.5px]`}
+            style={{ 
+                x: mouseX,
+                y: mouseY
+            }}
+            animate={{
+              rotate: [0, 10, -10, 0],
+            }}
+            transition={{
+              rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+          >
+            <div className="drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]">
+              {item.icon}
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black z-[1]" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.section
-          ref={ref}
-          className="relative z-10 md:min-h-screen lg:min-h-200 mt-15 flex flex-col lg:flex-row px-4 sm:px-6 lg:px-10 py-12 gap-10 bg-opacity-70"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-10 md:gap-12 pt-24 pb-16 md:py-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Left Text Content */}
-          <div className="flex flex-col justify-center w-full lg:w-1/2 space-y-4 text-left text-white">
-            <motion.h1
-              className="text-3xl md:text-4xl min-h-27 lg:max-w-2xl font-extrabold"
-              initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              I’m <span className="text-purple-500">Sojibur Rahman Asif</span>{" "}
-              <Typewriter
-                words={["MERN Stack Developer", "Web Application Developer"]}
-                loop
-                cursor
-                cursorStyle="|"
-                typeSpeed={50}
-                deleteSpeed={10}
-                delaySpeed={1500}
-              />
-            </motion.h1>
-
-            <motion.p
-              className="max-w-xl text-sm md:text-base text-gray-300"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              I am from Bangladesh, passionate about building simple, fast, and clean web applications using the MERN stack.
-            </motion.p>
-
+          
+          {/* Left Content */}
+          <div className="w-full lg:w-3/5 space-y-6 text-center lg:text-left z-20 order-2 lg:order-1">
             <motion.div
-              className="font-semibold text-base"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Find Me
+              <h2 className="text-purple-500 font-mono tracking-widest text-sm md:text-base mb-2 uppercase font-bold">
+                &lt; Developer Portfolio /&gt;
+              </h2>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+                I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 drop-shadow-md">Sojibur Rahman</span>
+                <br />
+                <span className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-400">
+                  <Typewriter
+                    words={["Full Stack Developer", "Software Engineer", "Go Enthusiast"]}
+                    loop={0}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={2000}
+                  />
+                </span>
+              </h1>
             </motion.div>
 
-            <motion.div
-              className="flex space-x-6 text-xl"
+            <p className="max-w-xl mx-auto lg:mx-0 text-gray-300/80 text-base md:text-lg leading-relaxed italic px-4 md:px-0">
+              &quot;Crafting scalable digital solutions with passion and precision.&quot;
+            </p>
+
+            <motion.div 
+              className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ delay: 0.5 }}
             >
-              {socialLinks.map((link, idx) => (
-                <a key={idx} href={link.href} target="_blank" rel="noopener noreferrer" className={`${link.colorClass} transition-colors`}>
-                  {link.icon}
-                </a>
-              ))}
+              <Link
+                href="/SojiburAsif.Resume.pdf"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-bold transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+                download
+              >
+                <FaDownload /> Resume
+              </Link>
+              
+              <div className="flex gap-3">
+                <Link href="https://github.com/SojiburAsif" target="_blank" className="p-4 bg-neutral-900 border border-neutral-800 rounded-2xl text-2xl text-white hover:border-purple-500 transition-all">
+                  <FaGithub />
+                </Link>
+                <Link href="https://www.linkedin.com/in/sojibur-asif/" target="_blank" className="p-4 bg-neutral-900 border border-neutral-800 rounded-2xl text-2xl text-blue-500 hover:border-purple-500 transition-all">
+                  <FaLinkedin />
+                </Link>
+              </div>
             </motion.div>
-
-            <motion.a
-              href="/SojiburAsif.Resume (1).pdf"
-              download
-              className="inline-flex items-center space-x-2 mt-4 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded text-white font-medium transition w-full md:w-[40%] lg:w-[39%] text-base md:text-lg lg:text-sm"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 1.0, duration: 0.8 }}
-            >
-              <FaDownload className="w-4 h-4 text-purple-300" />
-              <span>Download Resume</span>
-            </motion.a>
-
-            <motion.a
-              href="#Projects"
-              className="inline-block mt-2 px-6 py-3 border border-white rounded text-white font-medium transition w-full md:w-[40%] lg:w-[39%] text-base md:text-lg lg:text-sm bg-transparent hover:bg-white hover:text-black"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 1.1, duration: 0.8 }}
-            >
-              View Projects
-            </motion.a>
           </div>
 
-          {/* Right Image Section */}
-          <motion.div
-            className="w-full lg:w-1/2 flex justify-center items-center"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-          >
-            <motion.img
-              src="/My img/Gemini_Generated_Image_c7atjkc7atjkc7at.png"
-              alt="Portfolio Image"
-              className="w-[80vw] max-w-[380px] aspect-square rounded-full object-cover border-2 border-purple-500"
-            />
-          </motion.div>
+          {/* Right Image Container */}
+          <div className="w-full lg:w-2/5 flex justify-center items-center relative z-20 order-1 lg:order-2">
+            <motion.div
+              className="relative"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="absolute inset-0 bg-purple-600 rounded-full blur-[70px] opacity-25 animate-pulse" />
+              
+              <div className="relative p-1 bg-gradient-to-tr from-purple-500 via-transparent to-blue-500 rounded-full shadow-2xl">
+                <Image
+                  src="/My img/Gemini_Generated_Image_c7atjkc7atjkc7at.png"
+                  alt="Sojibur Rahman Asif"
+                  width={400}
+                  height={400}
+                  className="w-[250px] md:w-[350px] lg:w-[400px] aspect-square rounded-full object-cover border-[6px] border-black"
+                  priority
+                />
+              </div>
+
+              {/* Experience Badge */}
+              <motion.div 
+                className="absolute -bottom-2 -left-2 md:-left-5 bg-neutral-900/95 border border-purple-500/40 p-3 md:p-4 rounded-2xl backdrop-blur-md shadow-2xl z-30 flex items-center gap-3"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="bg-purple-600/20 p-2 rounded-lg">
+                  <FaBriefcase className="text-purple-500 text-lg md:text-xl" />
+                </div>
+                <div>
+                  <p className="text-white font-black text-lg md:text-xl leading-none">1.5+ Years</p>
+                  <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mt-1">Experience</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+
         </motion.section>
       </div>
     </div>

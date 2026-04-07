@@ -4,116 +4,136 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+// Icons
 import {
-  FaReact,
-  FaNode,
-  FaCss3Alt,
-  FaHtml5,
-  FaJsSquare,
-  FaGitAlt,
-  FaGithub,
+  FaReact, FaNode, FaCss3Alt, FaHtml5, FaJsSquare, FaGitAlt, FaGithub, FaDocker
 } from 'react-icons/fa';
 import {
-  SiMongodb,
-  SiExpress,
-  SiTailwindcss,
-  SiFirebase,
-  SiReactrouter,
-  SiNextdotjs,
-  SiMysql,
+  SiMongodb, SiExpress, SiTailwindcss, SiFirebase, SiReactrouter,
+  SiNextdotjs, SiPostgresql, SiTypescript, SiPrisma, SiGo, SiAuth0
 } from 'react-icons/si';
-import { FiLayers } from 'react-icons/fi';
+import { FiLayers, FiTerminal, FiShield } from 'react-icons/fi';
 
-// Frontend Skills
-// Frontend Skills
+// Skill Data Categories
 const frontendSkills = [
-  { name: 'React.js', icon: <FaReact className="text-cyan-400" />, url: 'https://react.dev/' },
   { name: 'Next.js', icon: <SiNextdotjs className="text-white" />, url: 'https://nextjs.org/' },
-  { name: 'JavaScript', icon: <FaJsSquare className="text-yellow-400" />, url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-  { name: 'HTML5', icon: <FaHtml5 className="text-orange-500" />, url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
-  { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" />, url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+  { name: 'TypeScript', icon: <SiTypescript className="text-blue-500" />, url: 'https://www.typescriptlang.org/' },
+  { name: 'React.js', icon: <FaReact className="text-cyan-400" />, url: 'https://react.dev/' },
+  { name: 'JavaScript', icon: <FaJsSquare className="text-yellow-400" />, url: 'https://developer.mozilla.org/' },
   { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-sky-400" />, url: 'https://tailwindcss.com/' },
-  { name: 'React Router', icon: <SiReactrouter className="text-pink-500" />, url: 'https://reactrouter.com/' },
+  { name: 'Framer Motion', icon: <FiLayers className="text-purple-400" />, url: 'https://www.framer.com/motion/' },
 ];
 
-// Backend Skills
 const backendSkills = [
-  { name: 'Node.js', icon: <FaNode className="text-green-600" />, url: 'https://nodejs.org/' },
-  { name: 'Express.js', icon: <SiExpress className="text-gray-200" />, url: 'https://expressjs.com/' },
-  { name: 'MongoDB', icon: <SiMongodb className="text-green-500" />, url: 'https://www.mongodb.com/' },
-  { name: 'Firebase', icon: <SiFirebase className="text-yellow-500" />, url: 'https://firebase.google.com/' },
-  { name: 'SQL', icon: <SiMysql className="text-blue-500" />, url: 'https://www.mysql.com/' },
+  { name: 'Node.js', icon: <FaNode className="text-green-500" />, url: 'https://nodejs.org/' },
+  { name: 'Go (Golang)', icon: <SiGo className="text-cyan-500" />, url: 'https://go.dev/' },
+  { name: 'BetterAuth', icon: <FiShield className="text-purple-500" />, url: 'https://www.better-auth.com/' }, // BetterAuth Added
+  { name: 'Prisma ORM', icon: <SiPrisma className="text-white" />, url: 'https://www.prisma.io/' },
+  { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-400" />, url: 'https://www.postgresql.org/' },
+  { name: 'MongoDB', icon: <SiMongodb className="text-green-400" />, url: 'https://www.mongodb.com/' },
 ];
 
-// Tools
-const tools = [
-  { name: 'Git', icon: <FaGitAlt className="text-red-500" />, url: 'https://git-scm.com/' },
-  { name: 'GitHub', icon: <FaGithub className="text-white" />, url: 'https://github.com/' },
+const toolsDevOps = [
+  { name: 'Docker', icon: <FaDocker className="text-blue-500" />, url: 'https://www.docker.com/' },
+  { name: 'Git & GitHub', icon: <FaGitAlt className="text-red-500" />, url: 'https://github.com/' },
+  { name: 'Express.js', icon: <SiExpress className="text-gray-400" />, url: 'https://expressjs.com/' },
 ];
 
+// Animations
 const containerVariants: Variants = {
-  hidden: {},
+  hidden: { opacity: 0 },
   visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'circOut' } },
 };
 
-// Skill Section Component
-const SkillsSection = ({ title, skills }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+// Sub-component for each skill card
+const SkillCard = ({ skill }: { skill: any }) => (
+  <motion.a
+    href={skill.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    variants={itemVariants}
+    whileHover={{ y: -8, scale: 1.02 }}
+    className="group relative flex flex-col items-center justify-center p-6 bg-[#0A0A0A] border border-neutral-900 rounded-2xl transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]"
+  >
+    <div className="text-5xl mb-4 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] transition-all duration-300">
+      {skill.icon}
+    </div>
+    <p className="text-sm md:text-base font-bold text-gray-400 group-hover:text-white transition-colors tracking-tight">
+      {skill.name}
+    </p>
+    {/* Bottom Accent - Purple */}
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-purple-500 group-hover:w-1/2 transition-all duration-300" />
+  </motion.a>
+);
+
+const SkillsSection = ({ title, skills }: { title: string; skills: any[] }) => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <div className="mb-12 max-w-7xl mx-auto md:px-14 px-4" ref={ref}>
-      <h3 className="text-2xl font-semibold text-purple-400 mb-6 text-center lg:text-left">{title}</h3>
+    <div className="space-y-10" ref={ref}>
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-[2px] bg-purple-600 shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
+        <h3 className="text-lg md:text-xl font-black uppercase tracking-[0.3em] text-gray-300">
+          {title}
+        </h3>
+      </div>
       <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8"
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
       >
         {skills.map((skill, idx) => (
-          <motion.a
-            key={idx}
-            href={skill.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center p-5 sm:p-6 bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-xl shadow-lg cursor-pointer"
-            variants={itemVariants}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          >
-            <div className="text-4xl sm:text-5xl mb-3">{skill.icon}</div>
-            <p className="text-sm sm:text-lg font-medium text-white">{skill.name}</p>
-          </motion.a>
+          <SkillCard key={idx} skill={skill} />
         ))}
-
       </motion.div>
     </div>
   );
 };
 
-// Main Skills Component
 const Skills = () => {
   return (
-    <section id="Skills" className="py-12 font-rancho bg-black text-white px-4 sm:px-6 md:px-12 lg:px-20">
-      <h2 className="flex items-center justify-center text-3xl sm:text-4xl font-bold text-center mb-14 gap-3">
-        <FiLayers className="text-blue-500 animate-pulse" size={38} />
-        My Skills
-      </h2>
-      <div className="max-w-7xl mx-auto space-y-16">
-        <SkillsSection title="Frontend" skills={frontendSkills} />
-        <SkillsSection title="Backend" skills={backendSkills} />
-        <SkillsSection title="Tools" skills={tools} />
+    <section id="Skills" className="relative py-28 bg-[#000000] text-white overflow-hidden">
+      
+      {/* Subtle Background Glow */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+        
+        {/* Header Section */}
+        <div className="flex flex-col items-center mb-24">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 mb-6 px-5 py-2 border border-neutral-800 rounded-full bg-neutral-900/50 backdrop-blur-sm"
+          >
+            <FiTerminal className="text-purple-500" size={16} />
+            <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-gray-500">Core_Stack.init()</span>
+          </motion.div>
+          
+          <h2 className="text-3xl md:text-5xl font-black text-center uppercase tracking-tighter leading-none">
+            Technical <span className="text-purple-600 drop-shadow-[0_0_15px_rgba(168,85,247,0.4)]">Arsenal</span>
+          </h2>
+          <div className="w-24 h-1 bg-purple-600 mt-6 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
+        </div>
+
+        {/* Categories */}
+        <div className="space-y-28">
+          <SkillsSection title="Frontend Mastery" skills={frontendSkills} />
+          <SkillsSection title="Backend & Auth" skills={backendSkills} />
+          <SkillsSection title="Tools & Infrastructure" skills={toolsDevOps} />
+        </div>
+
+        {/* Decorative Corner Orbs */}
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/10 blur-[100px] rounded-full pointer-events-none -z-10" />
       </div>
     </section>
   );
