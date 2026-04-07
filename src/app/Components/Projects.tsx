@@ -3,8 +3,8 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
-import { FiFolder } from 'react-icons/fi';
-import { FaReact, FaNodeJs } from 'react-icons/fa';
+import { FiFolder, FiX } from 'react-icons/fi';
+import { FaReact, FaNodeJs, FaArrowRight } from 'react-icons/fa';
 import {
   SiTailwindcss,
   SiMongodb,
@@ -13,10 +13,12 @@ import {
   SiStripe,
 } from 'react-icons/si';
 
+// Project Components Import
 import Project1 from '../Projects/Project1';
 import Project2 from '../Projects/Project2';
 import Project3 from '../Projects/project3';
 
+// Project Images Import
 import project1Img from '../../../public/Project-1/img1.png';
 import project2Img from '../../../public/Project-2/img11.png';
 import project3Img from '../../../public/project-3/img1.png';
@@ -63,26 +65,26 @@ const projects = [
 
 const gridVariants: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: -40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const modalBackdrop: Variants = { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
 const modalPanel: Variants = {
-  hidden: { opacity: 0, y: -12, scale: 0.985 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 260, damping: 28 } },
-  exit: { opacity: 0, y: -12, scale: 0.985, transition: { duration: 0.18 } },
+  hidden: { opacity: 0, scale: 0.98, y: 30 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', damping: 30, stiffness: 300 } },
+  exit: { opacity: 0, scale: 0.98, y: 30, transition: { duration: 0.3 } },
 };
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState(null);
   const [viewAllOpen, setViewAllOpen] = useState(false);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { amount: 0.18, once: false });
+  const isInView = useInView(sectionRef, { amount: 0.1, once: false });
 
   const ActiveComponent = activeProject ? activeProject.component : null;
 
@@ -90,169 +92,159 @@ export default function Projects() {
     <section
       id="Projects"
       ref={sectionRef}
-      className="scroll-mt-24 bg-gradient-to-br from-gray-900 via-black bg-black text-white py-12 font-rancho"
+      className="relative scroll-mt-24 bg-[#020202] text-white py-24 overflow-hidden"
     >
-      <motion.h1
-        className="text-4xl md:text-5xl text-center font-bold mb-8 flex items-center justify-center gap-3"
-        initial={{ opacity: 0, y: -24 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -24 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <FiFolder className="text-blue-500" size={36} /> My Projects
-      </motion.h1>
+      {/* Background Static Lines */}
+      <div className="absolute inset-0 opacity-[0.03] -z-10" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+      
+      {/* Glow Effects */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-[150px] -z-10" />
 
-      <motion.div
-        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:px-14 px-5"
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-        variants={gridVariants}
-      >
-        {projects.map((proj) => (
-          <motion.article
-            key={proj.title}
-            className="bg-[#0b1220] rounded-xl overflow-hidden shadow-lg border border-gray-800 flex flex-col"
-            style={{ minHeight: '330px' }}
-            variants={cardVariants}
-            whileHover={{ y: -8, boxShadow: '0 18px 40px rgba(8,7,25,0.5)' }}
-            transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Header - Sharp Design */}
+        <motion.div 
+          className="flex flex-col items-center mb-16 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+        >
+          <motion.div 
+            className="flex items-center gap-3 mb-5 px-5 py-2 border border-purple-900/50 bg-purple-950/20 backdrop-blur-sm"
+            initial={{ scale: 0.8 }}
+            animate={isInView ? { scale: 1 } : {}}
           >
-            <div className="relative w-full h-48">
-              <Image
-                src={proj.banner}
-                alt={proj.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover"
-              />
-            </div>
+            <FiFolder className="text-purple-500 animate-pulse" size={18} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-300">Development_Log.sh</span>
+          </motion.div>
+          
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-none">
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-600">
+              FEATURED WORKS
+            </span>
+          </h1>
+          <div className="h-1 w-24 bg-purple-600 shadow-[0_0_20px_#a855f7]" />
+        </motion.div>
 
-            <div className="p-5 flex flex-col justify-between flex-grow">
-              <div>
-                <h3 className="text-lg md:text-xl font-semibold mb-1 leading-tight">{proj.title}</h3>
-                <p className="text-purple-400 italic text-sm mb-3 truncate">{proj.subtitle}</p>
-
-                <div className="flex flex-wrap gap-2 mb-4 max-w-full overflow-hidden">
-                  {proj.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs flex items-center bg-gray-800 rounded-full px-2 py-1 select-none whitespace-nowrap"
-                    >
-                      {iconMap[tech] ?? null}
-                      <span className="max-w-[80px] truncate">{tech}</span>
-                    </span>
-                  ))}
-                </div>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          variants={gridVariants}
+        >
+          {projects.map((proj) => (
+            <motion.article
+              key={proj.title}
+              variants={cardVariants}
+              className="group relative bg-[#080808] border border-neutral-900 rounded-none overflow-hidden flex flex-col transition-all duration-500 hover:border-purple-600/50"
+              style={{ minHeight: '480px' }} // Height slightly reduced for compactness
+            >
+              {/* Image Container - Sharp */}
+              <div className="relative w-full h-52 overflow-hidden border-b border-neutral-900">
+                <Image
+                  src={proj.banner}
+                  alt={proj.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[30%] group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-80" />
               </div>
 
-              <button
-                onClick={() => setActiveProject(proj)}
-                className="mt-auto w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition-colors"
-                aria-expanded={activeProject === proj}
-              >
-                View Details →
-              </button>
-            </div>
-          </motion.article>
-        ))}
-      </motion.div>
+              {/* Content Container */}
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="mb-4">
+                  <h3 className="text-xl font-extrabold mb-1 group-hover:text-purple-400 transition-colors tracking-tight line-clamp-1">{proj.title}</h3>
+                  <p className="text-purple-600 text-[10px] font-black uppercase tracking-[0.2em] mb-3 line-clamp-1 italic">{proj.subtitle}</p>
+                </div>
 
-      <motion.div className="mt-10 flex justify-center">
-        <motion.button
-          onClick={() => setViewAllOpen(true)}
-          className="px-8 py-3 border border-white hover:bg-purple-500 rounded text-white font-semibold text-lg transition-transform"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          View All Projects →
-        </motion.button>
-      </motion.div>
+                {/* Tech Icons */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {proj.technologies.slice(0, 5).map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-[9px] flex items-center bg-neutral-900/50 border border-neutral-800 px-2.5 py-1 font-bold text-gray-400 uppercase tracking-tight group-hover:border-purple-900/30"
+                    >
+                      {iconMap[tech] || null}
+                      <span className="ml-1">{tech}</span>
+                    </span>
+                  ))}
+                  {proj.technologies.length > 5 && <span className="text-[9px] text-gray-600 self-center">+{proj.technologies.length - 5}</span>}
+                </div>
 
+                <p className="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-6">{proj.description}</p>
+
+                {/* Sharp Details Button */}
+                <button
+                  onClick={() => setActiveProject(proj)}
+                  className="relative mt-auto flex items-center justify-between gap-3 px-6 py-4 bg-[#0a0a0a] border border-purple-600/50 overflow-hidden transition-all duration-300 group-hover:border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.15)]"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] z-10">Details View</span>
+                  <FaArrowRight className="z-10 text-xs group-hover:translate-x-1 transition-transform" />
+                  <div className="absolute inset-0 bg-purple-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                </button>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+
+        {/* View All Button */}
+        <motion.div className="mt-16 flex justify-center">
+          <motion.button
+            onClick={() => setViewAllOpen(true)}
+            className="group relative flex items-center gap-4 px-10 py-4 bg-transparent border border-white/10 text-white font-bold uppercase tracking-[0.2em] text-[10px] overflow-hidden transition-all hover:border-purple-600"
+            whileHover={{ scale: 1.02 }}
+          >
+            <span className="relative z-10">Access Full Archive</span>
+            <div className="absolute inset-0 bg-purple-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            <FaArrowRight className="relative z-10 -rotate-45 group-hover:rotate-0 transition-transform" />
+          </motion.button>
+        </motion.div>
+      </div>
+
+      {/* Modals remain the same for functionality */}
       <AnimatePresence>
-        {activeProject && (
+        {(activeProject || viewAllOpen) && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/70"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md"
             variants={modalBackdrop}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
             <motion.div
-              className="bg-[#0b1220] w-full max-w-7xl max-h-[110vh] overflow-y-auto rounded-lg relative shadow-2xl p-0"
+              className="bg-[#050505] w-full max-w-7xl max-h-[90vh] overflow-y-auto rounded-none relative border border-purple-900/30 shadow-[0_0_100px_rgba(0,0,0,1)]"
               variants={modalPanel}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              role="dialog"
-              aria-modal="true"
             >
               <button
-                onClick={() => setActiveProject(null)}
-                className="absolute right-4 top-4 text-white text-2xl font-bold z-50"
-                aria-label="Close modal"
+                onClick={() => { setActiveProject(null); setViewAllOpen(false); }}
+                className="absolute right-6 top-6 w-10 h-10 flex items-center justify-center bg-purple-950/30 border border-purple-800 text-purple-400 hover:bg-red-950 hover:border-red-700 transition-all z-[110]"
               >
-                ✕
+                <FiX size={20} />
               </button>
-
-              <div className="p-0">{ActiveComponent ? <ActiveComponent project={activeProject} /> : null}</div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {viewAllOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-black/70"
-            variants={modalBackdrop}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <motion.div
-              className="bg-[#0b1220] w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg relative shadow-2xl p-5"
-              variants={modalPanel}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <button
-                onClick={() => setViewAllOpen(false)}
-                className="absolute right-4 top-4 text-white text-2xl font-bold z-50"
-                aria-label="Close modal"
-              >
-                ✕
-              </button>
-
-              <h2 className="text-2xl font-bold text-center mb-4">All Projects</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {projects.map((proj) => (
-                  <motion.div
-                    key={proj.title}
-                    className="bg-gray-900 rounded-lg p-3 flex items-center gap-3 cursor-pointer"
-                    onClick={() => {
-                      setActiveProject(proj);
-                      setViewAllOpen(false);
-                    }}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.18 }}
-                  >
-                    <div className="relative w-20 h-20 flex-shrink-0">
-                      <Image
-                        src={proj.banner}
-                        alt={proj.title}
-                        fill
-                        sizes="80px"
-                        className="object-cover rounded"
-                      />
+              
+              <div className="p-0">
+                {activeProject ? (
+                  <ActiveComponent project={activeProject} />
+                ) : (
+                  <div className="p-10 md:p-14">
+                    <h2 className="text-3xl md:text-4xl font-black mb-12 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 uppercase">System Archive</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {projects.map((proj) => (
+                        <div 
+                          key={proj.title}
+                          onClick={() => { setActiveProject(proj); setViewAllOpen(false); }}
+                          className="flex items-center gap-5 p-4 bg-[#080808] border border-neutral-900 hover:border-purple-600/50 cursor-pointer transition-all group"
+                        >
+                          <div className="relative w-16 h-16 overflow-hidden flex-shrink-0 border border-neutral-800">
+                            <Image src={proj.banner} alt={proj.title} fill className="object-cover group-hover:scale-105 transition-transform" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg leading-tight group-hover:text-purple-400">{proj.title}</h3>
+                            <p className="text-purple-600 text-[9px] font-black uppercase tracking-widest mt-1">{proj.subtitle}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-
-                    <div>
-                      <h3 className="font-semibold">{proj.title}</h3>
-                      <p className="text-xs text-purple-400">{proj.subtitle}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>

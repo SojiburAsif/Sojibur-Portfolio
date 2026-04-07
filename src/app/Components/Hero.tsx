@@ -115,10 +115,23 @@ const PortfolioBanner = () => {
             >
               <Link
                 href="/SojiburAsif.Resume.pdf"
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-bold transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)]"
                 download
+                className="group relative flex items-center gap-3 px-8 py-4 bg-transparent text-white text-sm font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 border border-purple-600/50 hover:border-purple-500 rounded-none shadow-[0_0_20px_rgba(168,85,247,0.2)]"
               >
-                <FaDownload /> Resume
+                {/* Background Slide Effect */}
+                <span className="absolute inset-0 w-0 bg-purple-600 transition-all duration-300 ease-out group-hover:w-full -z-10"></span>
+
+                {/* Top Right Accent */}
+                <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+
+                <FaDownload className="text-purple-500 group-hover:text-white transition-colors duration-300" />
+
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                  Resume
+                </span>
+
+                {/* Subtle Glow Effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_25px_rgba(168,85,247,0.4)] pointer-events-none"></div>
               </Link>
               
               <div className="flex gap-3">
@@ -155,16 +168,27 @@ const PortfolioBanner = () => {
 
               {/* Experience Badge */}
               <motion.div 
-                className="absolute -bottom-2 -left-2 md:-left-5 bg-neutral-900/95 border border-purple-500/40 p-3 md:p-4 rounded-2xl backdrop-blur-md shadow-2xl z-30 flex items-center gap-3"
+                className="absolute -bottom-2 -left-2 md:-left-5 group cursor-default"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="bg-purple-600/20 p-2 rounded-lg">
-                  <FaBriefcase className="text-purple-500 text-lg md:text-xl" />
-                </div>
-                <div>
-                  <p className="text-white font-black text-lg md:text-xl leading-none">1.5+ Years</p>
-                  <p className="text-gray-400 text-[10px] uppercase font-bold tracking-widest mt-1">Experience</p>
+                <div className="relative flex items-center gap-3 px-6 py-4 bg-[#0a0a0a] border border-purple-600/50 overflow-hidden transition-all duration-300 group-hover:border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.15)]">
+                  {/* Background Slide Effect (Subtle for Badge) */}
+                  <span className="absolute inset-0 w-0 bg-purple-600/10 transition-all duration-300 ease-out group-hover:w-full -z-10"></span>
+                  
+                  {/* Top Right Accent */}
+                  <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+
+                  <div className="bg-purple-600/20 p-2 border border-purple-500/20 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                    <FaBriefcase className="text-purple-500 group-hover:text-white text-lg md:text-xl transition-colors duration-300" />
+                  </div>
+                  <div>
+                    <p className="text-white font-black text-lg md:text-xl leading-none tracking-tight">1.5+ Years</p>
+                    <p className="text-gray-400 text-[10px] uppercase font-black tracking-[0.2em] mt-1 group-hover:text-purple-300 transition-colors duration-300">Experience</p>
+                  </div>
+
+                  {/* Subtle Glow Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_25px_rgba(168,85,247,0.3)] pointer-events-none"></div>
                 </div>
               </motion.div>
             </motion.div>
