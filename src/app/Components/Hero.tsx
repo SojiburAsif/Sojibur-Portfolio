@@ -181,19 +181,17 @@ const PortfolioBanner = () => {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="relative flex items-center gap-3 px-6 py-4 bg-[#0a0a0a] border border-purple-600/50 overflow-hidden transition-all duration-300 group-hover:border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.15)]">
-                  {/* Background Slide Effect (Subtle for Badge) */}
-                  <span className="absolute inset-0 w-0 bg-purple-600/10 transition-all duration-300 ease-out group-hover:w-full -z-10"></span>
+                <div className="relative flex items-center gap-3 px-6 py-4 bg-black border border-purple-600/50 overflow-hidden transition-all duration-300 group-hover:border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.15)]">
                   
                   {/* Top Right Accent */}
                   <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
 
-                  <div className="bg-purple-600/20 p-2 border border-purple-500/20 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
-                    <FaBriefcase className="text-purple-500 group-hover:text-white text-lg md:text-xl transition-colors duration-300" />
+                  <div className="bg-black p-2 border border-purple-500/20 transition-all duration-300">
+                    <FaBriefcase className="text-purple-500 text-lg md:text-xl transition-colors duration-300" />
                   </div>
                   <div>
                     <p className="text-white font-black text-lg md:text-xl leading-none tracking-tight">1.5+ Years</p>
-                    <p className="text-gray-400 text-[10px] uppercase font-black tracking-[0.2em] mt-1 group-hover:text-purple-300 transition-colors duration-300">Experience</p>
+                    <p className="text-gray-400 text-[10px] uppercase font-black tracking-[0.2em] mt-1 transition-colors duration-300">Experience</p>
                   </div>
 
                   {/* Subtle Glow Effect */}

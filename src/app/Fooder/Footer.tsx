@@ -1,36 +1,63 @@
 'use client';
 
 import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const Footer = () => {
   return (
     <>
-      {/* --- Floating WhatsApp Button --- */}
-      <motion.a
-        href="https://wa.me/8801840587095"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white w-16 h-16 flex items-center justify-center rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] border-2 border-white/20"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ 
-          scale: 1, 
-          opacity: 1,
-          y: [0, -10, 0] 
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        transition={{ 
-          y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-          default: { duration: 0.4 }
-        }}
-      >
-        <FaWhatsapp size={32} />
-        <span className="absolute inset-0 bg-[#25D366] opacity-20 animate-ping rounded-full"></span>
-      </motion.a>
+      {/* --- Floating Action Buttons --- */}
+      <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
+        {/* Floating LinkedIn Button */}
+        <motion.a
+          href="https://www.linkedin.com/in/sojibur-asif/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Connect on LinkedIn"
+          className="bg-[#0A66C2] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-[0_0_20px_rgba(10,102,194,0.4)] border-2 border-white/20"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ 
+            scale: 1, 
+            opacity: 1,
+            y: [0, -8, 0] 
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ 
+            y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
+            default: { duration: 0.4 }
+          }}
+        >
+          <FaLinkedin size={28} />
+          <span className="absolute inset-0 bg-[#0A66C2] opacity-20 animate-ping rounded-full"></span>
+        </motion.a>
+
+        {/* Floating WhatsApp Button */}
+        <motion.a
+          href="https://wa.me/8801840587095"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="bg-[#25D366] text-white w-14 h-14 flex items-center justify-center rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] border-2 border-white/20"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ 
+            scale: 1, 
+            opacity: 1,
+            y: [0, -10, 0] 
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ 
+            y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+            default: { duration: 0.4 }
+          }}
+        >
+          <FaWhatsapp size={30} />
+          <span className="absolute inset-0 bg-[#25D366] opacity-20 animate-ping rounded-full"></span>
+        </motion.a>
+      </div>
 
       {/* --- Footer Section --- */}
       <footer className="relative bg-black text-gray-400 py-10 border-t border-purple-600/20">
@@ -64,6 +91,34 @@ const Footer = () => {
 
           {/* Divider Line */}
           <div className="w-full max-w-xs h-[1px] bg-neutral-900 mb-6"></div>
+
+          {/* Social Links */}
+          <div className="flex gap-6 mb-8">
+            <a 
+              href="https://www.linkedin.com/in/sojibur-asif/" 
+              target="_blank" 
+              className="text-gray-500 hover:text-[#0A66C2] transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin size={20} />
+            </a>
+            <a 
+              href="https://github.com/SojiburAsif" 
+              target="_blank" 
+              className="text-gray-500 hover:text-white transition-colors duration-300"
+              aria-label="GitHub"
+            >
+              <FaGithub size={20} />
+            </a>
+            <a 
+              href="https://www.facebook.com/share/1JrRvtDKYi/" 
+              target="_blank" 
+              className="text-gray-500 hover:text-[#1877F2] transition-colors duration-300"
+              aria-label="Facebook"
+            >
+              <FaFacebook size={20} />
+            </a>
+          </div>
 
           {/* Copyright Text */}
           <motion.div 

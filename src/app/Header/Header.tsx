@@ -7,6 +7,8 @@ import {
   FaTimes,
   FaHome,
   FaUser,
+  FaTools,
+  FaCode,
   FaProjectDiagram,
   FaEnvelope,
   FaFilePdf,
@@ -39,8 +41,9 @@ const Header = () => {
   const links = [
     { id: 'home', label: 'Home', href: '#home', icon: <FaHome /> },
     { id: 'about', label: 'About', href: '#about', icon: <FaUser /> },
-    { id: 'skills', label: 'Skills', href: '#TechStack', icon: <FaProjectDiagram /> },
+    { id: 'skills', label: 'Skills', href: '#TechStack', icon: <FaTools /> },
     { id: 'projects', label: 'Projects', href: '#Projects', icon: <FaProjectDiagram /> },
+    { id: 'my-services', label: 'My Services', href: '#Services', icon: <FaCode /> },
     { id: 'contact', label: 'Contact', href: '#Contact', icon: <FaEnvelope /> },
   ];
 
@@ -62,7 +65,6 @@ const Header = () => {
             className="flex items-center"
           >
             <Link href="/" onClick={() => setActive('home')}>
-              {/* লোগো বড় করার জন্য h-16 বা h-20 ব্যবহার করতে পারেন */}
               <Image
                 src="/logo.png"
                 alt="Logo"
@@ -107,10 +109,10 @@ const Header = () => {
             className="hidden lg:flex items-center relative group/doc"
           >
             <button
-              className="group relative flex items-center gap-3 px-8 py-3 bg-transparent text-white text-sm font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 border border-purple-600/50 group-hover/doc:border-purple-500 shadow-[0_0_15px_rgba(147,51,234,0.1)] active:scale-95"
+              className="group relative flex items-center gap-2 px-5 py-2.5 bg-transparent text-white text-[10px] font-black uppercase tracking-[0.15em] overflow-hidden transition-all duration-300 border border-purple-600/50 group-hover/doc:border-purple-500 shadow-[0_0_15px_rgba(147,51,234,0.1)] active:scale-95"
             >
               <span className={`absolute inset-0 bg-purple-600 transition-all duration-300 ease-out -z-10 ${showDocs ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              <FaDownload className={`${showDocs ? 'text-white' : 'text-purple-500 group-hover:text-white'} transition-colors duration-300`} />
+              <FaDownload size={12} className={`${showDocs ? 'text-white' : 'text-purple-500 group-hover:text-white'} transition-colors duration-300`} />
               <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Documents</span>
             </button>
 

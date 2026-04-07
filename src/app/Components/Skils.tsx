@@ -75,10 +75,28 @@ const SkillCard = ({ skill }: { skill: any }) => (
 );
 
 const SkillsSection = ({ title, skills }: { title: string; skills: any[] }) => (
-  <motion.div className="space-y-10" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+  <motion.div 
+    className="space-y-10" 
+    variants={containerVariants} 
+    initial="hidden" 
+    whileInView="visible" 
+    viewport={{ once: false, amount: 0.1 }}
+  >
     <div className="flex items-center gap-4">
-      <div className="w-12 h-[1px] bg-purple-600 shadow-[0_0_10px_#9333ea]" />
-      <h3 className="text-xs md:text-sm font-black uppercase tracking-[0.5em] text-neutral-400">{title}</h3>
+      <motion.div 
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ duration: 0.8 }}
+        className="w-12 h-[1px] bg-purple-600 shadow-[0_0_10px_#9333ea] origin-left" 
+      />
+      <motion.h3 
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-xs md:text-sm font-black uppercase tracking-[0.5em] text-neutral-400"
+      >
+        {title}
+      </motion.h3>
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
       {skills.map((skill, idx) => <SkillCard key={idx} skill={skill} />)}
