@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { FiAward, FiExternalLink } from 'react-icons/fi';
 import { FaReact } from 'react-icons/fa';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 
 const certificates = [
   {
@@ -50,12 +50,12 @@ const certificates = [
   },
 ];
 
-const gridVariants = {
+const gridVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.07, delayChildren: 0.06 } },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: -24, scale: 0.995 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.52, ease: 'easeOut' } },
 };
@@ -125,6 +125,7 @@ export default function Certificate() {
                   src={cert.img}
                   alt={cert.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover brightness-90 group-hover:brightness-100 transition-all"
                 />
               </div>
@@ -201,7 +202,13 @@ export default function Certificate() {
                         transition={{ duration: 0.28, delay: idx * 0.04 }}
                       >
                         <div className="relative w-full h-48">
-                          <Image src={cert.img} alt={cert.title} fill className="object-cover" />
+                          <Image
+                            src={cert.img}
+                            alt={cert.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover"
+                          />
                         </div>
                         <div className="p-4">
                           <h3 className="text-lg font-semibold">{cert.title}</h3>
@@ -217,7 +224,13 @@ export default function Certificate() {
                   selectedCert && (
                     <div className="flex flex-col">
                       <div className="relative w-full h-[46vh] max-h-[680px] bg-gray-900 rounded-md overflow-hidden">
-                        <Image src={selectedCert.img} alt={selectedCert.title} fill className="object-contain" />
+                        <Image
+                          src={selectedCert.img}
+                          alt={selectedCert.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 80vw"
+                          className="object-contain"
+                        />
                       </div>
 
                       <div className="mt-4">

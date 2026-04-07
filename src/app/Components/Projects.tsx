@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 import { FiFolder } from 'react-icons/fi';
 import { FaReact, FaNodeJs } from 'react-icons/fa';
 import {
@@ -61,18 +61,18 @@ const projects = [
   },
 ];
 
-const gridVariants = {
+const gridVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: -40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
 };
 
-const modalBackdrop = { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
-const modalPanel = {
+const modalBackdrop: Variants = { hidden: { opacity: 0 }, visible: { opacity: 1 }, exit: { opacity: 0 } };
+const modalPanel: Variants = {
   hidden: { opacity: 0, y: -12, scale: 0.985 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 260, damping: 28 } },
   exit: { opacity: 0, y: -12, scale: 0.985, transition: { duration: 0.18 } },
@@ -117,7 +117,13 @@ export default function Projects() {
             transition={{ type: 'spring', stiffness: 280, damping: 22 }}
           >
             <div className="relative w-full h-48">
-              <Image src={proj.banner} alt={proj.title} fill className="object-cover" />
+              <Image
+                src={proj.banner}
+                alt={proj.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
             </div>
 
             <div className="p-5 flex flex-col justify-between flex-grow">
@@ -232,7 +238,13 @@ export default function Projects() {
                     transition={{ duration: 0.18 }}
                   >
                     <div className="relative w-20 h-20 flex-shrink-0">
-                      <Image src={proj.banner} alt={proj.title} fill className="object-cover rounded" />
+                      <Image
+                        src={proj.banner}
+                        alt={proj.title}
+                        fill
+                        sizes="80px"
+                        className="object-cover rounded"
+                      />
                     </div>
 
                     <div>

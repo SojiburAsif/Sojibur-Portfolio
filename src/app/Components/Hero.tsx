@@ -78,7 +78,7 @@ const PortfolioBanner = () => {
               ))}
             </motion.div>
 
-            <a
+            <motion.a
               href="/SojiburAsif.Resume (1).pdf"
               download
               className="inline-flex items-center space-x-2 mt-4 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded text-white font-medium transition w-full md:w-[40%] lg:w-[39%] text-base md:text-lg lg:text-sm"
@@ -88,9 +88,9 @@ const PortfolioBanner = () => {
             >
               <FaDownload className="w-4 h-4 text-purple-300" />
               <span>Download Resume</span>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="#Projects"
               className="inline-block mt-2 px-6 py-3 border border-white rounded text-white font-medium transition w-full md:w-[40%] lg:w-[39%] text-base md:text-lg lg:text-sm bg-transparent hover:bg-white hover:text-black"
               initial={{ opacity: 0, y: 20 }}
@@ -98,7 +98,7 @@ const PortfolioBanner = () => {
               transition={{ delay: 1.1, duration: 0.8 }}
             >
               View Projects
-            </a>
+            </motion.a>
           </div>
 
           {/* Right Image Section */}

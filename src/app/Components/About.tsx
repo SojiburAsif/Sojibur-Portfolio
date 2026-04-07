@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 import { FiInfo } from 'react-icons/fi';
 import {
     FaArrowRight,
@@ -24,17 +24,17 @@ export default function About() {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const leftVariants = {
+    const leftVariants: Variants = {
         hidden: { opacity: 0, x: -60 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } },
     };
 
-    const rightVariants = {
+    const rightVariants: Variants = {
         hidden: { opacity: 0, x: 60 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } },
     };
 
-    const textItemVariants = {
+    const textItemVariants: Variants = {
         hidden: { opacity: 0, y: 12 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
     };

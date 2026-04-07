@@ -10,13 +10,13 @@ import {
   FaWhatsapp,
   FaFacebook,
 } from 'react-icons/fa';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 
 export default function ContactSection() {
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState<string | null>(null);
   const [msg, setMsg] = useState('');
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   // when element is in viewport -> true, otherwise false
   const inView = useInView(sectionRef, { amount: 0.18, once: false });
@@ -24,15 +24,15 @@ export default function ContactSection() {
   const GOOGLE_SCRIPT_URL =
     'https://script.google.com/macros/s/AKfycbyaE4Z-rjzg0yGO-7umGjjHF8IMBVD4yF2QxhlZNQkVshMNOU-9rdVkI6KTug71eUJDgA/exec';
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus(null);
     setMsg('');
-    const form = e.target;
+    const form = e.currentTarget;
     const data = {
-      Name: form.Name.value.trim(),
-      Email: form.Email.value.trim(),
-      Message: form.Message.value.trim(),
+      Name: (form.elements.namedItem('Name') as HTMLInputElement).value.trim(),
+      Email: (form.elements.namedItem('Email') as HTMLInputElement).value.trim(),
+      Message: (form.elements.namedItem('Message') as HTMLTextAreaElement).value.trim(),
       submittedAt: new Date().toISOString(),
     };
 
@@ -72,13 +72,13 @@ export default function ContactSection() {
     }
   }
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0, y: 18, scale: 0.995 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { staggerChildren: 0.06 } },
     exit: { opacity: 0, y: 12, transition: { duration: 0.36 } },
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 12 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
     exit: { opacity: 0, y: 8, transition: { duration: 0.28 } },
@@ -206,7 +206,7 @@ export default function ContactSection() {
                   />
                   <motion.textarea
                     name="Message"
-                    rows="6"
+                    rows={6}
                     placeholder="Your Message"
                     required
                     className="w-full p-3 rounded bg-gray-900 text-gray-50"
