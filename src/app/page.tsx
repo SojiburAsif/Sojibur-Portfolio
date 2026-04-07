@@ -6,6 +6,7 @@ import Skills from './Components/Skils'
 import Projects from './Components/Projects'
 import Certificate from './Components/Certificate'
 import PortfolioBanner from './Components/Hero'
+import MyServices from './Components/Services'
 
 export default function page() {
   return (
@@ -14,6 +15,7 @@ export default function page() {
       <About></About>
       <Skills></Skills>
       <Projects></Projects>
+      <MyServices></MyServices>
       {/* <Certificate></Certificate> */}
       <ContactSection></ContactSection>
     </div>

@@ -57,20 +57,29 @@ export default function About() {
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-15 lg:px-12">
                 
-                {/* Unified Premium Header */}
-                <motion.h1
-                    className="flex items-center justify-center text-4xl sm:text-5xl font-extrabold text-center mb-12 sm:mb-20 gap-4 tracking-tight"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                    <div className="p-3 rounded-2xl bg-purple-500/10 border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.1)]">
-                        <FiInfo className="text-purple-500" size={40} />
-                    </div>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
-                        Engineer Identity
-                    </span>
-                </motion.h1>
+                {/* Header Section - Aligned to Left */}
+                <div className="flex flex-col items-start mb-16">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        className="flex items-center gap-3 mb-5 px-5 py-2 border border-purple-900/50 bg-purple-950/20 backdrop-blur-sm"
+                    >
+                        <FiInfo className="text-purple-500 animate-pulse" size={18} />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-300">Identity_Protocol.init()</span>
+                    </motion.div>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, x: -25 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.8 }}
+                        className="text-left"
+                    >
+                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
+                            Engineer <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-blue-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]">Identity</span>
+                        </h2>
+                        <div className="h-1 w-24 bg-purple-600 shadow-[0_0_20px_#a855f7]" />
+                    </motion.div>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start">
                     

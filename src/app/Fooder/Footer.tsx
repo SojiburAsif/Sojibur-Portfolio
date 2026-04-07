@@ -81,12 +81,7 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Bottom Accent */}
-          <motion.div 
-            className="mt-8 w-12 h-1 bg-purple-600 shadow-[0_0_15px_#9333ea]"
-            animate={{ width: [30, 60, 30] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          ></motion.div>
+         
         </div>
       </footer>
     </>

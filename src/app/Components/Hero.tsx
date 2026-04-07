@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView, useSpring } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import { FaDownload, FaGithub, FaLinkedin, FaReact, FaNodeJs, FaBriefcase } from "react-icons/fa";
+import { FaDownload, FaGithub, FaLinkedin, FaReact, FaNodeJs, FaBriefcase, FaFilePdf } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiPrisma } from "react-icons/si";
 
 
@@ -108,31 +108,40 @@ const PortfolioBanner = () => {
             </p>
 
             <motion.div 
-              className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start"
+              className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start relative"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.5 }}
             >
-              <Link
-                href="/SojiburAsif.Resume.pdf"
-                download
-                className="group relative flex items-center gap-3 px-8 py-4 bg-transparent text-white text-sm font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 border border-purple-600/50 hover:border-purple-500 rounded-none shadow-[0_0_20px_rgba(168,85,247,0.2)]"
-              >
-                {/* Background Slide Effect */}
-                <span className="absolute inset-0 w-0 bg-purple-600 transition-all duration-300 ease-out group-hover:w-full -z-10"></span>
+              <div className="relative group/doc">
+                <button
+                  className="group relative flex items-center gap-3 px-8 py-4 bg-transparent text-white text-sm font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 border border-purple-600/50 hover:border-purple-500 rounded-none shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+                >
+                  <span className="absolute inset-0 w-0 bg-purple-600 transition-all duration-300 ease-out group-hover:w-full -z-10"></span>
+                  <FaDownload className="text-purple-500 group-hover:text-white transition-colors duration-300" />
+                  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Documents</span>
+                </button>
 
-                {/* Top Right Accent */}
-                <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-
-                <FaDownload className="text-purple-500 group-hover:text-white transition-colors duration-300" />
-
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                  Resume
-                </span>
-
-                {/* Subtle Glow Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_25px_rgba(168,85,247,0.4)] pointer-events-none"></div>
-              </Link>
+                {/* Dropdown for Hero */}
+                <div className="absolute top-full left-0 mt-2 w-48 bg-[#0a0a0a] border border-white/10 opacity-0 invisible group-hover/doc:opacity-100 group-hover/doc:visible transition-all duration-300 z-50 shadow-2xl">
+                  <a
+                    href="/CV & Resume/SojiburAsif.Resume (1).pdf"
+                    download="SojiburAsif_Resume.pdf"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-purple-600/10 border-b border-white/5 group/item"
+                  >
+                    <FaFilePdf className="text-purple-500" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-white">Resume</span>
+                  </a>
+                  <a
+                    href="/CV & Resume/SojiburAsif.CV (1).pdf"
+                    download="SojiburAsif_CV.pdf"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-blue-600/10 group/item"
+                  >
+                    <FaFilePdf className="text-blue-500" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-white">Curriculum Vitae</span>
+                  </a>
+                </div>
+              </div>
               
               <div className="flex gap-3">
                 <Link href="https://github.com/SojiburAsif" target="_blank" className="p-4 bg-neutral-900 border border-neutral-800 rounded-2xl text-2xl text-white hover:border-purple-500 transition-all">

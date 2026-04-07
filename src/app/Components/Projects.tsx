@@ -118,11 +118,11 @@ export default function Projects() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-[150px] -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Header - Sharp Design */}
+        {/* Header - Aligned to Left */}
         <motion.div 
-          className="flex flex-col items-center mb-16 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          className="flex flex-col items-start mb-16 text-left"
+          initial={{ opacity: 0, x: -25 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
         >
           <motion.div 
             className="flex items-center gap-3 mb-5 px-5 py-2 border border-purple-900/50 bg-purple-950/20 backdrop-blur-sm"
@@ -134,7 +134,7 @@ export default function Projects() {
           </motion.div>
           
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-none">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-600 uppercase">
               FEATURED WORKS
             </span>
           </h1>

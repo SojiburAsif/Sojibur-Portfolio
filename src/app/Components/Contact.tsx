@@ -11,6 +11,7 @@ import {
   FaFacebook,
   FaDownload,
   FaPaperPlane,
+  FaFilePdf,
 } from 'react-icons/fa';
 import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 
@@ -18,6 +19,7 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [msg, setMsg] = useState('');
+  const [showDocs, setShowDocs] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const inView = useInView(sectionRef, { amount: 0.18, once: false });
@@ -103,18 +105,29 @@ export default function ContactSection() {
     <section id="Contact" ref={sectionRef} className="py-24 bg-black text-white overflow-hidden selection:bg-purple-500/30">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Header - Bold & Sharp */}
-        <motion.div 
-          className="mb-12"
-          initial={{ opacity: 0, x: -30 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 flex items-center gap-4 uppercase">
-             Contact <span className="text-purple-600">Me</span>
-          </h1>
-          <div className="h-1.5 w-16 bg-purple-600 shadow-[0_0_15px_#9333ea]"></div>
-        </motion.div>
+        {/* Header Section - Aligned to Left */}
+        <div className="flex flex-col items-start mb-16">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            className="flex items-center gap-3 mb-5 px-5 py-2 border border-purple-900/50 bg-purple-950/20 backdrop-blur-sm"
+          >
+            <FaEnvelope className="text-purple-500 animate-pulse" size={16} />
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-purple-300">Message_Protocol.init()</span>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: -25 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-left"
+          >
+            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
+              Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-blue-500 drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]">Me</span>
+            </h1>
+            <div className="h-1 w-24 bg-purple-600 shadow-[0_0_20px_#a855f7]" />
+          </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
@@ -180,16 +193,51 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* Download CV */}
-            <motion.div variants={item}>
-              <a
-                href="/SojiburAsif.CV (1).pdf"
-                download
-                className="inline-flex items-center gap-4 px-8 py-4 bg-purple-600 text-white text-[10px] font-black uppercase tracking-[0.3em] hover:bg-purple-700 transition-all shadow-[0_0_25px_rgba(147,51,234,0.2)] group"
-              >
-                <FaDownload className="group-hover:translate-y-1 transition-transform" />
-                Download_CV.exe
-              </a>
+            {/* Simple CV Download Section */}
+            <motion.div 
+              variants={item} 
+              className="relative group/doc-contact pt-4"
+              onMouseEnter={() => setShowDocs(true)}
+              onMouseLeave={() => setShowDocs(false)}
+            >
+              <div className="relative inline-block">
+                <button
+                  className="flex items-center gap-3 px-6 py-3 bg-purple-600 text-white text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-300 shadow-[0_0_20px_rgba(147,51,234,0.2)] hover:bg-purple-700 active:scale-95"
+                >
+                  <FaDownload size={12} />
+                  Download CV
+                </button>
+
+                {/* Dropdown Menu - Simple */}
+                <AnimatePresence>
+                  {showDocs && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute bottom-full left-0 w-48 mb-2 z-50 bg-[#0a0a0a] border border-white/10 shadow-2xl"
+                    >
+                      <a
+                        href="/CV & Resume/SojiburAsif.Resume (1).pdf"
+                        download="SojiburAsif_Resume.pdf"
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-purple-600/10 border-b border-white/5 transition-colors group/item"
+                      >
+                        <FaFilePdf className="text-purple-500" size={14} />
+                        <span className="text-[9px] font-black uppercase tracking-widest text-white">Resume</span>
+                      </a>
+
+                      <a
+                        href="/CV & Resume/SojiburAsif.CV (1).pdf"
+                        download="SojiburAsif_CV.pdf"
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-blue-600/10 transition-colors group/item"
+                      >
+                        <FaFilePdf className="text-blue-500" size={14} />
+                        <span className="text-[9px] font-black uppercase tracking-widest text-white">Full CV</span>
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </motion.div>
           </motion.div>
 
