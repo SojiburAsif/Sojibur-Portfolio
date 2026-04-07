@@ -66,6 +66,7 @@ const Header = () => {
                 alt="Logo"
                 width={100}
                 height={64}
+                style={{ width: 'auto', height: 'auto' }}
                 className="h-14 md:h-16 w-auto object-contain transition-all duration-300"
                 priority
               />

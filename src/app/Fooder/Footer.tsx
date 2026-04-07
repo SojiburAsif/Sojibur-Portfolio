@@ -1,49 +1,95 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <footer className="relative bg-black text-gray-400 py-6 border-t border-purple-600 text-center font-FiraSans">
-
-      <motion.button
-        onClick={scrollToTop}
-        aria-label="Back to top"
-        className="absolute -top-8 right-6 bg-[#0b1220] border border-gray-800 rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:scale-105 focus:outline-none"
-        initial={{ y: 0, scale: 1 }}
-        animate={{ y: [0, -8, 0], rotate: [0, 6, -6, 0] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+    <>
+      {/* --- Floating WhatsApp Button --- */}
+      <motion.a
+        href="https://wa.me/8801840587095"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white w-16 h-16 flex items-center justify-center rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] border-2 border-white/20"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ 
+          scale: 1, 
+          opacity: 1,
+          y: [0, -10, 0] 
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ 
+          y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+          default: { duration: 0.4 }
+        }}
       >
-        <FaArrowUp className="text-purple-400" size={18} />
-      </motion.button>
+        <FaWhatsapp size={32} />
+        <span className="absolute inset-0 bg-[#25D366] opacity-20 animate-ping rounded-full"></span>
+      </motion.a>
 
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-center">
-          <img
-            src="/Logo/logo.png"
-            alt="Sojibur Logo"
-            width={96}
-            height={96}
-            className="h-24 w-auto"
+      {/* --- Footer Section --- */}
+      <footer className="relative bg-black text-gray-400 py-10 border-t border-purple-600/20">
+        {/* Top Gradient Line */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-600 to-transparent opacity-40"></div>
+
+        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
           
-          />
-        </div>
+          {/* Logo Section - Reduced Size */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
+            <Image
+              src="/logo.png" 
+              alt="Sojibur Logo"
+              width={180} 
+              height={70}
+              className="h-16 w-auto brightness-125 object-contain"
+            />
+          </motion.div>
 
-        <p className="mt-2 text-sm sm:text-base">
-          © 2025. All rights reserved by{' '}
-          <span className="text-purple-400 font-semibold">Sojibur Rahman Asif</span>.
-        </p>
-      </div>
-    </footer>
+          {/* Navigation Links - Compact */}
+          <nav className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-6 text-[10px] font-black uppercase tracking-[0.4em]">
+            <a href="#Home" className="text-gray-500 hover:text-purple-500 transition-all duration-300">Home</a>
+            <a href="#Projects" className="text-gray-500 hover:text-purple-500 transition-all duration-300">Projects</a>
+            <a href="#Contact" className="text-gray-500 hover:text-purple-500 transition-all duration-300">Contact</a>
+          </nav>
+
+          {/* Divider Line */}
+          <div className="w-full max-w-xs h-[1px] bg-neutral-900 mb-6"></div>
+
+          {/* Copyright Text */}
+          <motion.div 
+            className="text-center space-y-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-white">
+              © 2026. <span className="text-purple-600">All_Rights_Reserved.</span>
+            </p>
+            <p className="text-[9px] font-medium tracking-widest text-gray-600">
+              DESIGNED & DEVELOPED BY 
+              <span className="text-white font-black block mt-1 text-[11px]">SOJIBUR RAHMAN ASIF</span>
+            </p>
+          </motion.div>
+
+          {/* Bottom Accent */}
+          <motion.div 
+            className="mt-8 w-12 h-1 bg-purple-600 shadow-[0_0_15px_#9333ea]"
+            animate={{ width: [30, 60, 30] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          ></motion.div>
+        </div>
+      </footer>
+    </>
   );
 };
 

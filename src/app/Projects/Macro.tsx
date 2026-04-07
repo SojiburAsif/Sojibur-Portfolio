@@ -8,35 +8,35 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaExternalLinkAlt, FaGithub, FaCheckCircle, FaDatabase } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaExternalLinkAlt, FaGithub, FaCheckCircle, FaBriefcase } from 'react-icons/fa';
 import {
   SiTailwindcss,
-  SiPostgresql,
-  SiPrisma,
-  SiNextdotjs,
+  SiMongodb,
+  SiFirebase,
   SiJsonwebtokens,
-  SiFramer,
   SiExpress,
 } from 'react-icons/si';
 
+// Image indices for ServZen (Adjust based on your public folder)
+const slides = [1, 2, 3, 4, 5]; 
+
 const techStack = [
-  { Icon: SiNextdotjs, label: 'Next.js', color: 'text-white' },
-  { Icon: SiExpress, label: 'Express.js', color: 'text-gray-400' },
   { Icon: FaReact, label: 'React', color: 'text-cyan-400' },
   { Icon: SiTailwindcss, label: 'Tailwind CSS', color: 'text-sky-400' },
-  { Icon: SiPrisma, label: 'Prisma ORM', color: 'text-emerald-400' },
-  { Icon: SiPostgresql, label: 'PostgreSQL', color: 'text-blue-500' },
+  { Icon: SiExpress, label: 'Express.js', color: 'text-gray-300' },
   { Icon: FaNodeJs, label: 'Node.js', color: 'text-green-500' },
-  { Icon: FaDatabase, label: 'BetterAuth', color: 'text-yellow-400' },
+  { Icon: SiMongodb, label: 'MongoDB', color: 'text-green-400' },
+  { Icon: SiFirebase, label: 'Firebase', color: 'text-yellow-400' },
+  { Icon: SiJsonwebtokens, label: 'JWT', color: 'text-rose-400' },
 ];
 
-const Project2 = () => {
+const Macro = () => {
   return (
     <div className="bg-[#050505] text-white selection:bg-purple-500/30">
       <div className="max-w-7xl mx-auto px-6 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Side: Swiper / Image Section */}
+          {/* Left Side: Swiper Section */}
           <div className="lg:col-span-7 order-1">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -44,7 +44,7 @@ const Project2 = () => {
               transition={{ duration: 0.6 }}
               className="relative group"
             >
-              {/* Sharp Decorative Border */}
+              {/* Sharp Decorative Border with Purple Glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 opacity-20 group-hover:opacity-40 transition duration-500 blur-sm"></div>
               
               <div className="relative bg-[#0a0a0a] border border-white/10 overflow-hidden">
@@ -53,21 +53,19 @@ const Project2 = () => {
                   navigation={true}
                   pagination={{ clickable: true, dynamicBullets: true }}
                   loop={true}
-                  autoplay={{ delay: 4000, disableOnInteraction: false }}
+                  autoplay={{ delay: 3800, disableOnInteraction: false }}
                   modules={[Navigation, Autoplay, Pagination]}
                   className="project-swiper w-full aspect-video sm:h-[400px] lg:h-[450px]"
                 >
-                  {/* SkillBridge Screenshots (Assumed path) */}
-                  {[1, 2, 3, 4, 5].map((num) => (
+                  {[1, 2, 3, 4, 5, 6].map((num) => (
                     <SwiperSlide key={num} className="bg-black flex items-center justify-center">
                       <div className="relative w-full h-full">
                         <Image
-                          src={`/Project-4/img${num}.png`}
-                          alt={`SkillBridge Slide ${num}`}
+                          src={`/Project-2/img${num === 1 ? 10 : num === 2 ? 11 : num === 3 ? 12 : num === 4 ? 13 : num === 5 ? 14 : 18}.png`}
+                          alt={`Macro System screenshot ${num}`}
                           fill
-                          sizes="(max-width: 768px) 100vw, 70vw"
                           className="object-contain md:object-cover"
-                          priority={num === 1}
+                          sizes="(max-width: 768px) 100vw, 50vw"
                         />
                       </div>
                     </SwiperSlide>
@@ -75,9 +73,9 @@ const Project2 = () => {
                 </Swiper>
               </div>
               
-              {/* Floating Badge */}
-              <div className="absolute top-4 left-4 z-10 bg-blue-600 px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl">
-                Full-Stack Marketplace
+              {/* Sharp Floating Badge */}
+              <div className="absolute top-4 left-4 z-10 bg-purple-600 px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl">
+                Macro System
               </div>
             </motion.div>
           </div>
@@ -90,36 +88,39 @@ const Project2 = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="mb-6">
-                <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
-                  SKILLBRIDGE
-                </h2>
-                <p className="text-blue-500 text-xs font-bold uppercase tracking-[0.3em] mb-6">
-                  Tutor Booking & Skill Exchange Platform
+                <div className="flex items-center gap-2 mb-2">
+                   <FaBriefcase className="text-purple-500" size={18} />
+                   <h2 className="text-3xl md:text-4xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 uppercase">
+                    Macro
+                  </h2>
+                </div>
+                <p className="text-purple-500 text-xs font-bold uppercase tracking-[0.3em] mb-6">
+                  Automation & Integration Hub
                 </p>
-                <div className="h-1 w-12 bg-blue-600"></div>
+                <div className="h-1 w-12 bg-purple-600"></div>
               </div>
 
               <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
-                SkillBridge is a robust <span className="text-white font-medium">Tutor Booking Platform</span> designed to connect students with expert mentors. It features a comprehensive scheduling system, secure payments, and a dynamic database architecture built for scale.
+                Macro is a specialized <span className="text-white font-medium">Automation and Workflow Integration Hub</span>. It streamlines complex business processes by connecting multiple APIs and triggers to execute high-efficiency macro operations.
               </p>
 
               {/* Feature List */}
               <div className="space-y-3 mb-10">
                 {[
-                  'Advanced Tutor Search & Filtering',
-                  'Real-time Booking & Scheduling System',
-                  'Secure Student/Tutor Dashboards',
-                  'Relational Database with Prisma & PostgreSQL'
+                  'Custom Macro Workflow Automation',
+                  'Seamless Multi-API Integration',
+                  'Real-time Execution Tracking',
+                  'Advanced Trigger-based Logic'
                 ].map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-3 group">
-                    <FaCheckCircle className="text-blue-500 group-hover:scale-110 transition-transform" size={14} />
+                    <FaCheckCircle className="text-purple-500 group-hover:scale-110 transition-transform" size={14} />
                     <span className="text-sm text-gray-300 font-medium tracking-wide">{feature}</span>
                   </div>
                 ))}
               </div>
 
               {/* Tech Stack Grid */}
-              <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Core Technology:</h4>
+              <h4 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Built With:</h4>
               <div className="grid grid-cols-2 gap-2 mb-10">
                 {techStack.map(({ Icon, label, color }) => (
                   <div
@@ -138,10 +139,10 @@ const Project2 = () => {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-blue-600 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-blue-700 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] group"
+                  className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-purple-600 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-purple-700 transition-all shadow-[0_0_20px_rgba(168,85,247,0.3)] group"
                 >
                   <FaExternalLinkAlt className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                  Live Demo
+                  Live System
                 </a>
 
                 <a
@@ -151,7 +152,7 @@ const Project2 = () => {
                   className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-transparent border border-white/10 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all"
                 >
                   <FaGithub size={16} />
-                  GitHub Source
+                  View Source
                 </a>
               </div>
             </motion.div>
@@ -159,7 +160,7 @@ const Project2 = () => {
         </div>
       </div>
 
-      {/* Global Swiper Customization */}
+      {/* Sharp Pagination Styles */}
       <style jsx global>{`
         .project-swiper .swiper-button-next,
         .project-swiper .swiper-button-prev {
@@ -171,7 +172,7 @@ const Project2 = () => {
           &::after { font-size: 16px !important; font-weight: 900; }
         }
         .project-swiper .swiper-pagination-bullet {
-          background: #2563eb !important;
+          background: #a855f7 !important; /* Purple for Macro */
           border-radius: 0 !important; 
           width: 12px;
           height: 3px;
@@ -181,4 +182,4 @@ const Project2 = () => {
   );
 };
 
-export default Project2;
+export default Macro;

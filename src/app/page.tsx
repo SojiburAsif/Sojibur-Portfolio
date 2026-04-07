@@ -14,7 +14,7 @@ export default function page() {
       <About></About>
       <Skills></Skills>
       <Projects></Projects>
-      <Certificate></Certificate>
+      {/* <Certificate></Certificate> */}
       <ContactSection></ContactSection>
     </div>
   )

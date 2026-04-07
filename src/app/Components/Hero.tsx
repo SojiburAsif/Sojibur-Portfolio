@@ -8,7 +8,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { FaDownload, FaGithub, FaLinkedin, FaReact, FaNodeJs, FaBriefcase } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiPostgresql, SiTailwindcss, SiPrisma } from "react-icons/si";
 
-// আইকন ডেটা - মোবাইল পজিশন (top) বাড়ানো হয়েছে যাতে নিচে নামে
+
 const floatingIcons = [
   { icon: <FaReact />, pos: "top-[10%] left-[8%] md:top-[10%] md:left-[5%]", size: "text-4xl md:text-5xl", color: "text-cyan-500/40" },
   { icon: <SiNextdotjs />, pos: "top-[35%] left-[80%] md:top-[20%] md:left-[85%]", size: "text-3xl md:text-4xl", color: "text-white/30" },
@@ -42,7 +42,7 @@ const PortfolioBanner = () => {
   return (
     <div className="relative min-h-screen bg-[#000000] overflow-hidden font-rancho" id="home" ref={ref}>
       
-      {/* ১. ভাসমান আইকনসমূহ */}
+
       <div className="absolute inset-0 pointer-events-none z-0">
         {floatingIcons.map((item, idx) => (
           <motion.div
