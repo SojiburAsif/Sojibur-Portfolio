@@ -125,7 +125,7 @@ const PortfolioBanner = () => {
                 {/* Dropdown for Hero */}
                 <div className="absolute top-full left-0 mt-2 w-48 bg-[#0a0a0a] border border-white/10 opacity-0 invisible group-hover/doc:opacity-100 group-hover/doc:visible transition-all duration-300 z-50 shadow-2xl">
                   <a
-                    href="/CV & Resume/SojiburAsif.Resume (1).pdf"
+                    href="/CV & Resume/SojiburAsif.Resume.pdf"
                     download="SojiburAsif_Resume.pdf"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-purple-600/10 border-b border-white/5 group/item"
                   >
@@ -133,7 +133,7 @@ const PortfolioBanner = () => {
                     <span className="text-[10px] font-black uppercase tracking-widest text-white">Resume</span>
                   </a>
                   <a
-                    href="/CV & Resume/SojiburAsif.CV (1).pdf"
+                    href="/CV & Resume/SojiburAsif...CV  (1).pdf"
                     download="SojiburAsif_CV.pdf"
                     className="flex items-center gap-3 px-4 py-3 hover:bg-blue-600/10 group/item"
                   >
