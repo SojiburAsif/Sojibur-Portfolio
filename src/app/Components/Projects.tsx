@@ -24,9 +24,9 @@ import Macro from '../Projects/Macro';
 
 // Project Images Import
 import project1Img from '../../../public/Project-1/img1.png';
-import project2Img from '../../../public/Project-4/img1.png';
+import project2Img from '../../../public/Project-2/img1.png';
 import project3Img from '../../../public/Project-3/img1.png'; 
-import macroImg from '../../../public/Project-2/img11.png'; 
+ 
 
 const iconMap = {
   React: <FaReact className="inline-block text-blue-400 mr-1" size={14} />,
@@ -52,13 +52,13 @@ const projects = [
     technologies: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Firebase', 'JWT', 'Stripe'],
   },
   {
-    title: 'SkillBridge - Tutor Booking Platform',
+    title: 'MentorFlow - Tutor Booking Platform',
     subtitle: 'Expert mentor matching system',
     banner: project2Img,
     component: Project2,
     description:
       'A robust Tutor Booking Platform designed to connect students with expert mentors. It features scheduling, secure payments, and a scalable architecture.',
-    technologies: ['Next.js', 'Express.js', 'React', 'BetterAuth', 'Prisma', 'PostgreSQL'],
+    technologies: ['Next.js', 'Express.js', 'BetterAuth', 'Prisma', 'PostgreSQL'],
   },
   {
     title: 'ServZen - Premium Service Marketplace',
@@ -67,17 +67,18 @@ const projects = [
     component: Project3,
     description:
       'ServZen is a specialized marketplace for professional services. It provides a clean, high-performance interface for users to discover, book, and manage local services with an integrated review and rating system.',
-    technologies: ['Next.js', 'Express.js', 'React', 'BetterAuth', 'Tailwind CSS'],
+    technologies: ['Next.js', 'Express.js', 'BetterAuth', 'Tailwind CSS' ,'Prisma', 'PostgreSQL'],
   },
-  {
-    title: 'Macro - Automation & Integration Hub',
-    subtitle: 'Streamline complex workflows',
-    banner: macroImg,
-    component: Macro,
-    description:
-      'Macro is a specialized Automation and Workflow Integration Hub. It streamlines complex business processes by connecting multiple APIs and triggers.',
-    technologies: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Firebase', 'JWT'],
-  },
+
+  // {
+  //   title: 'Macro - Automation & Integration Hub',
+  //   subtitle: 'Streamline complex workflows',
+  //   banner: macroImg,
+  //   component: Macro,
+  //   description:
+  //     'Macro is a specialized Automation and Workflow Integration Hub. It streamlines complex business processes by connecting multiple APIs and triggers.',
+  //   technologies: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Firebase', 'JWT'],
+  // },
 ];
 
 const gridVariants: Variants = {

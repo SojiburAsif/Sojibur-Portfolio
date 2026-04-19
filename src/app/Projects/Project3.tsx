@@ -35,10 +35,10 @@ const Project3 = () => {
     <div className="bg-[#050505] text-white selection:bg-orange-500/30">
       <div className="max-w-7xl mx-auto px-6 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Side: Swiper Section */}
           <div className="lg:col-span-7 order-1">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -46,7 +46,7 @@ const Project3 = () => {
             >
               {/* Sharp Decorative Border with Orange Glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-amber-600 opacity-20 group-hover:opacity-40 transition duration-500 blur-sm"></div>
-              
+
               <div className="relative bg-[#0a0a0a] border border-white/10 overflow-hidden">
                 <Swiper
                   spaceBetween={0}
@@ -57,7 +57,7 @@ const Project3 = () => {
                   modules={[Navigation, Autoplay, Pagination]}
                   className="project-swiper w-full aspect-video sm:h-[400px] lg:h-[450px]"
                 >
-                  {[1, 2, 3, 4, 5, 6].map((num) => (
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
                     <SwiperSlide key={num} className="bg-black flex items-center justify-center">
                       <div className="relative w-full h-full">
                         <Image
@@ -73,7 +73,7 @@ const Project3 = () => {
                   ))}
                 </Swiper>
               </div>
-              
+
               {/* Sharp Floating Badge */}
               <div className="absolute top-4 left-4 z-10 bg-orange-600 px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl">
                 Service Hub
@@ -90,8 +90,8 @@ const Project3 = () => {
             >
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
-                   <FaBriefcase className="text-orange-500" size={18} />
-                   <h2 className="text-3xl md:text-4xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 uppercase">
+                  <FaBriefcase className="text-orange-500" size={18} />
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 uppercase">
                     ServZen
                   </h2>
                 </div>
@@ -137,17 +137,17 @@ const Project3 = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#"
+                  href="https://servi-zen-fontend.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-orange-600 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-orange-700 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] group"
+                  className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-green-600 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-green-700 transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] group"
                 >
                   <FaExternalLinkAlt className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                   Live Preview
                 </a>
 
                 <a
-                  href="https://github.com/SojiburAsif"
+                  href="https://github.com/SojiburAsif/ServiZen_Fontend"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-transparent border border-white/10 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all"

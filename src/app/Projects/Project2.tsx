@@ -58,12 +58,12 @@ const Project2 = () => {
                   className="project-swiper w-full aspect-video sm:h-[400px] lg:h-[450px]"
                 >
                   {/* SkillBridge Screenshots (Assumed path) */}
-                  {[1, 2, 3, 4, 5].map((num) => (
+                  {[1, 2, 3, 4, 5 , 6,7,8].map((num) => (
                     <SwiperSlide key={num} className="bg-black flex items-center justify-center">
                       <div className="relative w-full h-full">
                         <Image
-                          src={`/Project-4/img${num}.png`}
-                          alt={`SkillBridge Slide ${num}`}
+                          src={`/Project-2/img${num}.png`}
+                          alt={`MentorFlow Slide ${num}`}
                           fill
                           sizes="(max-width: 768px) 100vw, 70vw"
                           className="object-contain md:object-cover"
@@ -135,7 +135,7 @@ const Project2 = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#"
+                  href="https://mentor-flow-fontend.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-blue-600 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-blue-700 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] group"
@@ -145,7 +145,7 @@ const Project2 = () => {
                 </a>
 
                 <a
-                  href="https://github.com/SojiburAsif"
+                  href="https://github.com/SojiburAsif/MentorFlow"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-transparent border border-white/10 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white/5 transition-all"
