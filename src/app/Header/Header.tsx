@@ -37,7 +37,7 @@ const Header = () => {
     setIsOpen(false);
   };
 
-  // href এর id গুলো সব ছোট হাতের অক্ষরে (lowercase) করা হয়েছে সামঞ্জস্য রাখার জন্য
+
   const links = [
     { id: 'home', label: 'Home', href: '#home', icon: <FaHome /> },
     { id: 'about', label: 'About', href: '#about', icon: <FaUser /> },
@@ -129,7 +129,7 @@ const Header = () => {
                     <div className="absolute inset-0 bg-linear-to-b from-purple-600/5 to-transparent pointer-events-none"></div>
                     
                     <a
-                      href="/CV & Resume/SojiburAsif.Resume (1).pdf"
+                      href="/CV & Resume/SojiburAsif.Resume.pdf"
                       download="SojiburAsif_Resume.pdf"
                       className="flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-colors border-b border-white/5 group/item"
                     >
@@ -143,7 +143,7 @@ const Header = () => {
                     </a>
 
                     <a
-                      href="/CV & Resume/SojiburAsif.CV (1).pdf"
+                      href="/CV & Resume/SojiburAsif...CV  (1).pdf"
                       download="SojiburAsif_CV.pdf"
                       className="flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-colors group/item"
                     >
