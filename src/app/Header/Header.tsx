@@ -227,7 +227,7 @@ const Header = () => {
                   <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-500/50">Downloads</span>
                   
                   <a
-                    href="/CV & Resume/SojiburAsif.Resume (1).pdf"
+                    href="/CV & Resume/SojiburAsif.Resume.pdf"
                     download="SojiburAsif_Resume.pdf"
                     className="flex items-center gap-4 bg-white/5 p-4 border border-white/10 group transition-all"
                   >
@@ -241,7 +241,7 @@ const Header = () => {
                   </a>
 
                   <a
-                    href="/CV & Resume/SojiburAsif.CV (1).pdf"
+                    href="/CV & Resume/SojiburAsif.CV.pdf"
                     download="SojiburAsif_CV.pdf"
                     className="flex items-center gap-4 bg-white/5 p-4 border border-white/10 group transition-all"
                   >

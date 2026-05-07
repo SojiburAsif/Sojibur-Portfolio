@@ -21,6 +21,8 @@ const floatingIcons = [
 
 const PortfolioBanner = () => {
   const ref = useRef(null);
+  const docRef = useRef<HTMLDivElement | null>(null);
+  const [showDocs, setShowDocs] = useState(false);
   const isInView = useInView(ref, { once: false, margin: "-100px" });
   
   const springConfig = { stiffness: 100, damping: 30 };
@@ -38,6 +40,28 @@ const PortfolioBanner = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY]);
+
+  // Close the Documents dropdown when clicking outside or pressing Escape
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (docRef.current && !docRef.current.contains(e.target as Node)) {
+        setShowDocs(false);
+      }
+    };
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowDocs(false);
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-[#000000] overflow-hidden font-rancho" id="home" ref={ref}>
@@ -113,8 +137,12 @@ const PortfolioBanner = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.5 }}
             >
-              <div className="relative group/doc">
+              <div className="relative group" ref={docRef}>
                 <button
+                  type="button"
+                  onClick={() => setShowDocs((s) => !s)}
+                  aria-haspopup="menu"
+                  aria-expanded={showDocs}
                   className="group relative flex items-center gap-3 px-8 py-4 bg-transparent text-white text-sm font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 border border-purple-600/50 hover:border-purple-500 rounded-none shadow-[0_0_20px_rgba(168,85,247,0.2)]"
                 >
                   <span className="absolute inset-0 w-0 bg-purple-600 transition-all duration-300 ease-out group-hover:w-full -z-10"></span>
@@ -122,12 +150,20 @@ const PortfolioBanner = () => {
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-white">Documents</span>
                 </button>
 
-                {/* Dropdown for Hero */}
-                <div className="absolute top-full left-0 mt-2 w-48 bg-[#0a0a0a] border border-white/10 opacity-0 invisible group-hover/doc:opacity-100 group-hover/doc:visible transition-all duration-300 z-50 shadow-2xl">
+                {/* Dropdown for Hero (visible on hover or when toggled on mobile) */}
+                <div
+                  className={`absolute top-full left-0 mt-2 w-48 bg-[#0a0a0a] border border-white/10 transition-all duration-300 z-50 shadow-2xl ${
+                    showDocs
+                      ? "opacity-100 visible pointer-events-auto"
+                      : "opacity-0 invisible pointer-events-none"
+                  } group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto`}
+                  role="menu"
+                >
                   <a
                     href="/CV & Resume/SojiburAsif.Resume.pdf"
                     download="SojiburAsif_Resume.pdf"
-                    className="flex items-center gap-3 px-4 py-3 hover:bg-purple-600/10 border-b border-white/5 group/item"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-purple-600/10 border-b border-white/5"
+                    role="menuitem"
                   >
                     <FaFilePdf className="text-purple-500" />
                     <span className="text-[10px] font-black uppercase tracking-widest text-white">Resume</span>
@@ -135,7 +171,8 @@ const PortfolioBanner = () => {
                   <a
                     href="/CV & Resume/SojiburAsif...CV  (1).pdf"
                     download="SojiburAsif_CV.pdf"
-                    className="flex items-center gap-3 px-4 py-3 hover:bg-blue-600/10 group/item"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-blue-600/10"
+                    role="menuitem"
                   >
                     <FaFilePdf className="text-blue-500" />
                     <span className="text-[10px] font-black uppercase tracking-widest text-white">Curriculum Vitae</span>
