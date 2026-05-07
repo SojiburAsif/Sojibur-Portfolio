@@ -241,7 +241,7 @@ const Header = () => {
                   </a>
 
                   <a
-                    href="/CV & Resume/SojiburAsif.CV.pdf"
+                    href="/CV & Resume/SojiburAsif...CV  (1).pdf"
                     download="SojiburAsif_CV.pdf"
                     className="flex items-center gap-4 bg-white/5 p-4 border border-white/10 group transition-all"
                   >
